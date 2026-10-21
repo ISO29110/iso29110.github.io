@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISO/IEC 29110 Guide</title>
+<meta name="description" content="A student guide to ISO/IEC 29110: software engineering lifecycle profiles for Very Small Entities (VSEs).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14234b; --navy-2:#1f3470; --cherry:#b5173d; --cherry-soft:#f7dde4;
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#18192b; --muted:#5b6078; --line:#e2e1da;
+  --pm:#1f3470; --si:#b5173d; --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1222; --surface:#161c33; --ink:#eceef6; --muted:#a3a9c2; --line:#2a3152;
+    --navy:#c9d3f5; --navy-2:#8fa3e6; --cherry:#ff6f8f; --cherry-soft:#3a1a26;
+    --pm:#8fa3e6; --si:#ff6f8f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1222; --surface:#161c33; --ink:#eceef6; --muted:#a3a9c2; --line:#2a3152;
+  --navy:#c9d3f5; --navy-2:#8fa3e6; --cherry:#ff6f8f; --cherry-soft:#3a1a26;
+  --pm:#8fa3e6; --si:#ff6f8f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+a{color:var(--cherry)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;color:var(--navy);margin:0 0 .5em}
+h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+h3{font-size:1.2rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+.eyebrow{font:500 .78rem/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--cherry);margin-bottom:12px}
+.lead{font-size:1.1rem;color:var(--muted);max-width:68ch}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:58px}
+.brand{font:700 1.05rem Fraunces,serif;color:var(--navy);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--cherry)}
+.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;flex:1}
+.links a{color:var(--muted);text-decoration:none;font-size:.9rem;white-space:nowrap}
+.links a:hover{color:var(--cherry)}
+#themeBtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:36px;height:36px;cursor:pointer;flex:none}
+
+/* hero */
+.hero{padding:84px 0 72px;border:0}
+.hero h1{font-size:clamp(2.3rem,6vw,4rem);max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--cherry)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:40px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.stat b{display:block;font:700 1.9rem Fraunces,serif;color:var(--navy)}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* cards */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.card p{margin:.3em 0 0;color:var(--muted)}
+.tag{display:inline-block;font:500 .72rem "JetBrains Mono",monospace;padding:3px 8px;border-radius:6px;background:var(--cherry-soft);color:var(--cherry);margin-bottom:10px}
+
+/* profile ladder */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end;margin-top:32px}
+.step{border-radius:var(--radius);padding:18px;color:#fff;cursor:pointer;border:2px solid transparent;transition:transform .15s}
+.step:hover,.step.active{transform:translateY(-4px);border-color:var(--cherry)}
+.step h3{color:#fff;margin:0}
+.step small{opacity:.85}
+.s1{background:#5a6fa8;min-height:110px}.s2{background:#3b4f8c;min-height:150px}
+.s3{background:#283a73;min-height:190px}.s4{background:#14234b;min-height:230px}
+.ladder-detail{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--cherry);border-radius:var(--radius);padding:20px}
+
+/* parts table */
+table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+th{background:var(--navy-2);color:#fff;font-weight:600}
+:root[data-theme="dark"] th{color:#0e1222}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) th{color:#0e1222}}
+td code{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--cherry);white-space:nowrap}
+.tbl{overflow-x:auto;margin-top:24px}
+
+/* process explorer */
+.tabs{display:flex;gap:8px;margin:28px 0 18px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:999px;cursor:pointer;font:600 .92rem Inter}
+.tab.on{background:var(--navy-2);color:#fff;border-color:var(--navy-2)}
+:root[data-theme="dark"] .tab.on{color:#0e1222}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab.on{color:#0e1222}}
+.explorer{display:grid;grid-template-columns:280px 1fr;gap:16px}
+.acts{display:flex;flex-direction:column;gap:8px}
+.act{text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:12px 14px;border-radius:10px;cursor:pointer;font:500 .93rem Inter}
+.act code{font-family:"JetBrains Mono",monospace;color:var(--cherry);margin-right:8px;font-size:.82rem}
+.act.on{border-color:var(--cherry);box-shadow:inset 4px 0 0 var(--cherry)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.panel ul{padding-left:20px;margin:.4em 0 1em}
+.io{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.io div{background:var(--bg);border-radius:10px;padding:12px 14px}
+.io h4{margin:0 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.chip{display:inline-block;font-size:.8rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);margin:3px 4px 0 0;background:var(--surface)}
+
+/* flow diagram */
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.node{padding:10px 14px;border-radius:10px;font-weight:600;font-size:.9rem;color:#fff}
+.node.pm{background:var(--pm)}.node.si{background:var(--si)}
+:root[data-theme="dark"] .node{color:#0e1222}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .node{color:#0e1222}}
+.arrow{color:var(--muted)}
+
+/* work products */
+.filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.filter input{flex:1;min-width:200px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.wp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:18px}
+.wp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.wp b{display:block;color:var(--navy)}
+.wp small{color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+/* quiz */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-top:14px}
+.q p{margin:0 0 10px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font:inherit}
+.opt.right{border-color:#2e8b57;background:color-mix(in srgb,#2e8b57 14%,var(--surface))}
+.opt.wrong{border-color:var(--cherry);background:var(--cherry-soft)}
+.why{font-size:.92rem;color:var(--muted);margin-top:8px;display:none}
+.score{margin-top:18px;font:600 1.05rem Fraunces,serif;color:var(--navy)}
+
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+@media (max-width:760px){
+  .ladder{grid-template-columns:repeat(2,1fr)}
+  .explorer{grid-template-columns:1fr}
+  .io{grid-template-columns:1fr}
+  section{padding:48px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">ISO/IEC <span>29110</span></a>
+    <div class="links">
+      <a href="#what">What</a><a href="#profiles">Profiles</a><a href="#parts">Parts</a>
+      <a href="#basic">Basic Profile</a><a href="#roles">Roles</a><a href="#products">Work Products</a><a href="#quiz">Quiz</a>
+    </div>
+    <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Software Engineering Standards · Study Guide</div>
+    <h1>Good engineering practice, sized for <em>very small</em> teams.</h1>
+    <p class="lead">ISO/IEC 29110 defines lifecycle profiles for Very Small Entities (VSEs): companies, departments or projects with up to 25 people. It gives small teams a lightweight, auditable way to plan projects and build software without the overhead of standards written for large organisations.</p>
+    <div class="stats">
+      <div class="stat"><b>≤ 25</b><span>people in a VSE</span></div>
+      <div class="stat"><b>4</b><span>profiles in the Generic group</span></div>
+      <div class="stat"><b>2</b><span>processes: PM &amp; SI</span></div>
+      <div class="stat"><b>10</b><span>activities in the Basic profile</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow">01 · Why it exists</div>
+    <h2>The problem 29110 solves</h2>
+    <p class="lead">Most software is built by small organisations, yet standards such as ISO/IEC/IEEE 12207 and models like CMMI are hard for a five-person team to adopt. ISO/IEC 29110 extracts a coherent subset of those practices and packages it with free, practical guides.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">VSE</span><h3>Who it's for</h3><p>Start-ups, small software houses, internal IT teams and individual projects of up to 25 people.</p></div>
+      <div class="card"><span class="tag">PROFILE</span><h3>What it contains</h3><p>A "profile" is a selected set of processes, activities, tasks, roles and work products drawn from larger base standards.</p></div>
+      <div class="card"><span class="tag">GUIDE</span><h3>How it's used</h3><p>Management &amp; Engineering Guides describe exactly what to do, who does it, and what each activity produces.</p></div>
+      <div class="card"><span class="tag">CERT</span><h3>How it's verified</h3><p>VSEs can be assessed or certified against a profile, which signals process maturity to customers.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="profiles">
+  <div class="wrap">
+    <div class="eyebrow">02 · Generic Profile Group</div>
+    <h2>Four profiles, one growth path</h2>
+    <p class="lead">Profiles are progressive. A VSE can start small and move up as it grows. Click a step to see what it adds.</p>
+    <div class="ladder" id="ladder"></div>
+    <div class="ladder-detail" id="ladderDetail"></div>
+  </div>
+</section>
+
+<section id="parts">
+  <div class="wrap">
+    <div class="eyebrow">03 · Document set</div>
+    <h2>How the standard is organised</h2>
+    <p class="lead">ISO/IEC 29110 is a family of documents. Parts 1, 2 and 4 are aimed at standards producers and assessors; Part 5 guides are written for the VSE itself.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Part</th><th>Title (short)</th><th>Main audience</th></tr></thead>
+        <tbody>
+          <tr><td><code>29110-1</code></td><td>Overview: concepts, terms and the VSE context</td><td>Everyone</td></tr>
+          <tr><td><code>29110-2</code></td><td>Framework and taxonomy for creating profiles</td><td>Standards producers</td></tr>
+          <tr><td><code>29110-3</code></td><td>Assessment, certification and audit guidance</td><td>Assessors, auditors, VSEs</td></tr>
+          <tr><td><code>29110-4</code></td><td>Profile specifications (normative requirements)</td><td>Standards producers, tool vendors</td></tr>
+          <tr><td><code>29110-5</code></td><td>Management &amp; Engineering Guides for each profile</td><td><strong>VSEs and students</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;margin-top:12px">Parallel guides also exist for systems engineering (systems that include hardware as well as software) and for agile and DevOps contexts.</p>
+  </div>
+</section>
+
+<section id="basic">
+  <div class="wrap">
+    <div class="eyebrow">04 · The Basic Profile</div>
+    <h2>Two processes that work together</h2>
+    <p class="lead">The Basic profile is the most widely taught. <strong style="color:var(--pm)">Project Management (PM)</strong> plans and controls the work; <strong style="color:var(--si)">Software Implementation (SI)</strong> builds the product. The Statement of Work from the customer kicks everything off.</p>
+
+    <div class="flow" aria-label="Basic profile flow">
+      <span class="node" style="background:var(--muted)">Statement of Work</span><span class="arrow">→</span>
+      <span class="node pm">PM.1 Planning</span><span class="arrow">→</span>
+      <span class="node pm">PM.2 Execution ⇄ PM.3 Control</span><span class="arrow">⇄</span>
+      <span class="node si">SI.1 – SI.6</span><span class="arrow">→</span>
+      <span class="node pm">PM.4 Closure</span><span class="arrow">→</span>
+      <span class="node" style="background:var(--muted)">Delivered product</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab on" data-proc="PM">Project Management (PM)</button>
+      <button class="tab" data-proc="SI">Software Implementation (SI)</button>
+    </div>
+    <div class="explorer">
+      <div class="acts" id="acts"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="roles">
+  <div class="wrap">
+    <div class="eyebrow">05 · Roles</div>
+    <h2>Who does what</h2>
+    <p class="lead">In a VSE one person often holds several roles. The standard defines the responsibilities, not the job titles.</p>
+    <div class="grid" id="roleGrid"></div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <div class="eyebrow">06 · Work products</div>
+    <h2>The artefacts you'll produce</h2>
+    <p class="lead">Every activity consumes and produces work products. Search or filter to see where each one comes from.</p>
+    <div class="filter">
+      <input id="wpSearch" type="search" placeholder="Search work products…">
+      <button class="tab on" data-wp="all">All</button>
+      <button class="tab" data-wp="PM">PM</button>
+      <button class="tab" data-wp="SI">SI</button>
+    </div>
+    <div class="wp-grid" id="wpGrid"></div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <div class="eyebrow">07 · Check yourself</div>
+    <h2>Quick quiz</h2>
+    <p class="lead">Five questions on the essentials. Pick an answer to see the explanation.</p>
+    <div id="quizBox"></div>
+    <div class="score" id="score"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Further reading.</strong> ISO/IEC TR 29110-5-1-2 (Basic profile Management &amp; Engineering Guide) is freely available from the ISO <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/" target="_blank" rel="noopener">Publicly Available Standards</a> page. Prof. Claude Y. Laporte's ISO 29110 resources (ÉTS Montréal) include deployment packages and case studies.</p>
+    <p>This page is an educational summary prepared for teaching. It paraphrases the standard and does not replace the official ISO/IEC documents.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t;}catch(e){}
+  btn.onclick=()=>{
+    const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}
+  };
+})();
+
+/* ---------- profiles ---------- */
+const profiles=[
+  {n:'Entry',c:'s1',sub:'Start-ups & tiny projects',d:'For VSEs starting out, or projects of roughly six person-months or less. Keeps only the essential PM and SI tasks so a newly formed team can establish basic discipline: a plan, agreed requirements, testing and controlled delivery.'},
+  {n:'Basic',c:'s2',sub:'One project, one team',d:'For a VSE developing a single application with a single work team. Defines the full PM (4 activities) and SI (6 activities) processes, roles and work products. This is the profile most often used for teaching and certification.'},
+  {n:'Intermediate',c:'s3',sub:'Several projects at once',d:'For VSEs running more than one project in parallel. Adds organisational-level practices such as business management, portfolio management and handling of resources shared across projects.'},
+  {n:'Advanced',c:'s4',sub:'Growing, competitive VSEs',d:'For VSEs that want to sustain and grow as an independent, competitive business. Builds on Intermediate with stronger business and organisational management practices.'}
+];
+const ladder=document.getElementById('ladder'), ld=document.getElementById('ladderDetail');
+profiles.forEach((p,i)=>{
+  const el=document.createElement('div'); el.className='step '+p.c+(i===1?' active':'');
+  el.innerHTML=`<small>Profile ${i+1}</small><h3>${p.n}</h3><small>${p.sub}</small>`;
+  el.onclick=()=>{document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));el.classList.add('active');showProfile(p)};
+  ladder.appendChild(el);
+});
+function showProfile(p){ld.innerHTML=`<h3>${p.n} profile</h3><p style="margin:0;color:var(--muted)">${p.d}</p>`}
+showProfile(profiles[1]);
+
+/* ---------- activities ---------- */
+const acts={
+ PM:[
+  {id:'PM.1',t:'Project Planning',obj:'Produce the Project Plan and agree it with the customer, based on the Statement of Work.',
+   tasks:['Review the Statement of Work','Define delivery instructions and the task list','Estimate effort, duration and resources','Identify risks and define a version-control strategy','Get the plan accepted by the customer'],
+   in:['Statement of Work'],out:['Project Plan','Project Repository','Verification Results','Meeting Record'],r:['PJM','TL','CUS']},
+  {id:'PM.2',t:'Project Plan Execution',obj:'Carry out the plan, record progress, and handle change requests.',
+   tasks:['Monitor the plan and record actual results','Analyse and evaluate change requests','Hold review meetings with the work team and customer','Back up the project repository'],
+   in:['Project Plan','Change Request'],out:['Progress Status Record','Change Request (evaluated)','Meeting Record','Project Repository Backup'],r:['PJM','TL','WT','CUS']},
+  {id:'PM.3',t:'Project Assessment and Control',obj:'Compare actual progress with the plan and take corrective action when needed.',
+   tasks:['Evaluate progress against the plan (cost, schedule, risks)','Establish corrective actions','Track corrective actions to closure'],
+   in:['Project Plan','Progress Status Record'],out:['Correction Register','Progress Status Record (updated)'],r:['PJM','TL','WT']},
+  {id:'PM.4',t:'Project Closure',obj:'Deliver the product formally and obtain the customer\'s acceptance.',
+   tasks:['Formalise completion of the project per the delivery instructions','Obtain the signed Acceptance Record','Update the project repository'],
+   in:['Project Plan','Software Configuration'],out:['Acceptance Record','Project Repository (final)'],r:['PJM','CUS']}
+ ],
+ SI:[
+  {id:'SI.1',t:'Software Implementation Initiation',obj:'Make sure the team understands and commits to the Project Plan.',
+   tasks:['Review the Project Plan with the work team','Set up the implementation environment'],
+   in:['Project Plan'],out:['Project Plan (reviewed)','Implementation environment'],r:['TL','WT']},
+  {id:'SI.2',t:'Software Requirements Analysis',obj:'Establish requirements that are agreed, verified and validated with the customer.',
+   tasks:['Elicit and document requirements','Verify the Requirements Specification','Validate it with the customer','Draft the user documentation (optional)','Baseline in the repository'],
+   in:['Project Plan'],out:['Requirements Specification','Verification Results','Validation Results','Change Request','Software User Documentation (prelim.)'],r:['AN','CUS','TL','PJM']},
+  {id:'SI.3',t:'Software Architectural and Detailed Design',obj:'Transform requirements into an architecture and detailed design, with traceability.',
+   tasks:['Produce architectural and detailed design','Define test cases and procedures','Update the Traceability Record','Verify the design'],
+   in:['Requirements Specification'],out:['Software Design','Test Cases and Test Procedures','Traceability Record','Verification Results'],r:['DES','TL','AN']},
+  {id:'SI.4',t:'Software Construction',obj:'Write the code and data according to the design, and unit-test the components.',
+   tasks:['Construct or update software components','Design and run unit tests','Correct defects','Update the Traceability Record'],
+   in:['Software Design','Traceability Record'],out:['Software Components','Traceability Record (updated)'],r:['PR','TL']},
+  {id:'SI.5',t:'Software Integration and Tests',obj:'Integrate components and confirm the software satisfies the requirements.',
+   tasks:['Integrate the software','Run integration and system tests','Record results in the Test Report','Correct defects','Produce the Product Operation Guide'],
+   in:['Software Components','Test Cases and Test Procedures'],out:['Software','Test Report','Product Operation Guide','Software User Documentation'],r:['PR','TL','CUS']},
+  {id:'SI.6',t:'Product Delivery',obj:'Package the product and hand it over according to the delivery instructions.',
+   tasks:['Prepare Maintenance Documentation','Verify all documentation','Incorporate the Software Configuration into the baseline','Deliver to the customer'],
+   in:['Software','Project Plan'],out:['Software Configuration','Maintenance Documentation','Verification Results'],r:['TL','PJM','CUS']}
+ ]
+};
+let cur='PM';
+const actsEl=document.getElementById('acts'), panel=document.getElementById('panel');
+function renderActs(){
+  actsEl.innerHTML='';
+  acts[cur].forEach((a,i)=>{
+    const b=document.createElement('button'); b.className='act'+(i===0?' on':'');
+    b.innerHTML=`<code>${a.id}</code>${a.t}`;
+    b.onclick=()=>{actsEl.querySelectorAll('.act').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderPanel(a)};
+    actsEl.appendChild(b);
+  });
+  renderPanel(acts[cur][0]);
+}
+const chips=a=>a.map(x=>`<span class="chip">${x}</span>`).join('');
+function renderPanel(a){
+  panel.innerHTML=`<div class="eyebrow" style="color:${cur==='PM'?'var(--pm)':'var(--si)'}">${a.id}</div>
+  <h3>${a.t}</h3><p style="color:var(--muted)">${a.obj}</p>
+  <h4 style="margin:16px 0 4px">Key tasks</h4><ul>${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+  <div class="io"><div><h4>Main inputs</h4>${chips(a.in)}</div><div><h4>Main outputs</h4>${chips(a.out)}</div></div>
+  <h4 style="margin:16px 0 4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Roles involved</h4>${chips(a.r)}`;
+}
+document.querySelectorAll('[data-proc]').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('[data-proc]').forEach(x=>x.classList.remove('on'));t.classList.add('on');cur=t.dataset.proc;renderActs();
+});
+renderActs();
+
+/* ---------- roles ---------- */
+const roles=[
+  ['CUS','Customer','Provides the Statement of Work, reviews progress, validates requirements and accepts the product.'],
+  ['PJM','Project Manager','Plans, leads and controls the project; manages risks, changes and customer communication.'],
+  ['TL','Technical Leader','Leads technical decisions, coordinates the work team and verifies technical work products.'],
+  ['WT','Work Team','The developers as a group, collectively responsible for producing the software.'],
+  ['AN','Analyst','Elicits, specifies and analyses requirements with the customer.'],
+  ['DES','Designer','Produces the architectural and detailed design.'],
+  ['PR','Programmer','Builds, unit-tests and integrates the software components.']
+];
+document.getElementById('roleGrid').innerHTML=roles.map(r=>`<div class="card"><span class="tag">${r[0]}</span><h3>${r[1]}</h3><p>${r[2]}</p></div>`).join('');
+
+/* ---------- work products ---------- */
+const wps=[
+  ['Statement of Work','PM','Input from the customer: product description, scope, deliverables, schedule.'],
+  ['Project Plan','PM','Tasks, schedule, resources, risks, version control and delivery instructions.'],
+  ['Progress Status Record','PM','Actual vs planned progress, cost and schedule.'],
+  ['Meeting Record','PM','Agreements and action items from reviews.'],
+  ['Change Request','PM','A requested change to a work product, with its evaluation and status.'],
+  ['Correction Register','PM','Problems found and corrective actions to close them.'],
+  ['Acceptance Record','PM','The customer\'s formal acceptance of the delivery.'],
+  ['Project Repository','PM','Controlled storage for all project work products and their versions.'],
+  ['Requirements Specification','SI','Functional and non-functional requirements agreed with the customer.'],
+  ['Software Design','SI','Architectural and detailed design of the components and interfaces.'],
+  ['Traceability Record','SI','Links requirements to design, code and test cases.'],
+  ['Test Cases and Test Procedures','SI','What to test, expected results, and how to run each test.'],
+  ['Test Report','SI','Results of integration and system testing.'],
+  ['Software Components','SI','Coded units, with unit tests.'],
+  ['Software Configuration','SI','The baselined set of software and documentation for delivery.'],
+  ['Software User Documentation','SI','How end-users operate the software.'],
+  ['Product Operation Guide','SI','Information needed to install and operate the product.'],
+  ['Maintenance Documentation','SI','What the maintainers need to support the software afterwards.'],
+  ['Verification Results','SI','Findings from checking a work product against its criteria.'],
+  ['Validation Results','SI','Findings from confirming a work product meets the customer\'s needs.']
+];
+let wpf='all';
+const wpGrid=document.getElementById('wpGrid'), wpSearch=document.getElementById('wpSearch');
+function renderWp(){
+  const q=wpSearch.value.toLowerCase();
+  const list=wps.filter(w=>(wpf==='all'||w[1]===wpf)&&(w[0]+' '+w[2]).toLowerCase().includes(q));
+  wpGrid.innerHTML=list.length?list.map(w=>`<div class="wp"><b><span class="dot" style="background:${w[1]==='PM'?'var(--pm)':'var(--si)'}"></span>${w[0]}</b><small>${w[1]} · ${w[2]}</small></div>`).join(''):'<p style="color:var(--muted)">No matching work products.</p>';
+}
+wpSearch.oninput=renderWp;
+document.querySelectorAll('[data-wp]').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('[data-wp]').forEach(x=>x.classList.remove('on'));t.classList.add('on');wpf=t.dataset.wp;renderWp();
+});
+renderWp();
+
+/* ---------- quiz ---------- */
+const quiz=[
+  {q:'What is the maximum size of a Very Small Entity (VSE) in ISO/IEC 29110?',o:['10 people','25 people','50 people','100 people'],a:1,w:'A VSE is an enterprise, organisation, department or project with up to 25 people.'},
+  {q:'Which two processes make up the Basic profile?',o:['Requirements and Testing','Project Management and Software Implementation','Design and Construction','Quality Assurance and Configuration Management'],a:1,w:'The Basic profile has two processes: Project Management (PM) and Software Implementation (SI).'},
+  {q:'Which work product triggers the start of Project Planning (PM.1)?',o:['Requirements Specification','Test Report','Statement of Work','Acceptance Record'],a:2,w:'The customer\'s Statement of Work is the main input to PM.1.'},
+  {q:'Which record links requirements to design, code and tests?',o:['Traceability Record','Correction Register','Progress Status Record','Meeting Record'],a:0,w:'The Traceability Record is created in SI.2/SI.3 and updated through construction and testing.'},
+  {q:'Which part of the standard is written mainly for VSEs to use day-to-day?',o:['Part 1','Part 2','Part 4','Part 5'],a:3,w:'Part 5 contains the Management and Engineering Guides aimed directly at VSEs.'}
+];
+let score=0, answered=0;
+const qb=document.getElementById('quizBox'), sc=document.getElementById('score');
+quiz.forEach((item,qi)=>{
+  const d=document.createElement('div'); d.className='q';
+  d.innerHTML=`<p>${qi+1}. ${item.q}</p>`+item.o.map((o,oi)=>`<button class="opt" data-i="${oi}">${o}</button>`).join('')+`<div class="why">${item.w}</div>`;
+  d.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    if(d.dataset.done) return; d.dataset.done=1; answered++;
+    const pick=+b.dataset.i;
+    d.querySelectorAll('.opt')[item.a].classList.add('right');
+    if(pick===item.a) score++; else b.classList.add('wrong');
+    d.querySelector('.why').style.display='block';
+    sc.textContent=`Score: ${score} / ${answered}`+(answered===quiz.length?(score===quiz.length?' — excellent!':' — review the sections above and try again.'):'');
+  });
+  qb.appendChild(d);
+});
+</script>
+</body>
+</html>
