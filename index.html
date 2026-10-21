@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ISO/IEC 29110 Guide</title>
-<meta name="description" content="A student guide to ISO/IEC 29110: software engineering lifecycle profiles for Very Small Entities (VSEs).">
+<title>ISO/IEC 29110 for Business</title>
+<meta name="description" content="ISO/IEC 29110 for small software businesses: what it is, the business case, how to adopt it with Deployment Packages, and the path to certification.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -12,19 +12,19 @@
 :root{
   --navy:#14234b; --navy-2:#1f3470; --cherry:#b5173d; --cherry-soft:#f7dde4;
   --bg:#f7f6f2; --surface:#ffffff; --ink:#18192b; --muted:#5b6078; --line:#e2e1da;
-  --pm:#1f3470; --si:#b5173d; --radius:14px;
+  --pm:#1f3470; --si:#b5173d; --ok:#2e7d55; --on-accent:#ffffff; --radius:14px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0e1222; --surface:#161c33; --ink:#eceef6; --muted:#a3a9c2; --line:#2a3152;
     --navy:#c9d3f5; --navy-2:#8fa3e6; --cherry:#ff6f8f; --cherry-soft:#3a1a26;
-    --pm:#8fa3e6; --si:#ff6f8f;
+    --pm:#8fa3e6; --si:#ff6f8f; --ok:#6fd3a0; --on-accent:#0e1222;
   }
 }
 :root[data-theme="dark"]{
   --bg:#0e1222; --surface:#161c33; --ink:#eceef6; --muted:#a3a9c2; --line:#2a3152;
   --navy:#c9d3f5; --navy-2:#8fa3e6; --cherry:#ff6f8f; --cherry-soft:#3a1a26;
-  --pm:#8fa3e6; --si:#ff6f8f;
+  --pm:#8fa3e6; --si:#ff6f8f; --ok:#6fd3a0; --on-accent:#0e1222;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -32,11 +32,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-
 a{color:var(--cherry)}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;color:var(--navy);margin:0 0 .5em}
 h2{font-size:clamp(1.6rem,3vw,2.2rem)}
-h3{font-size:1.2rem}
+h3{font-size:1.15rem}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 section{padding:64px 0;border-top:1px solid var(--line)}
 .eyebrow{font:500 .78rem/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--cherry);margin-bottom:12px}
-.lead{font-size:1.1rem;color:var(--muted);max-width:68ch}
+.lead{font-size:1.08rem;color:var(--muted);max-width:68ch}
 
 /* nav */
 nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -50,11 +50,15 @@ nav .wrap{display:flex;align-items:center;gap:20px;height:58px}
 
 /* hero */
 .hero{padding:84px 0 72px;border:0}
-.hero h1{font-size:clamp(2.3rem,6vw,4rem);max-width:16ch}
+.hero h1{font-size:clamp(2.2rem,5.6vw,3.8rem);max-width:18ch}
 .hero h1 em{font-style:normal;color:var(--cherry)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:40px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--navy-2)}
+.btn.primary{background:var(--navy-2);color:var(--on-accent)}
+.btn.ghost{color:var(--navy-2);background:transparent}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:44px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-.stat b{display:block;font:700 1.9rem Fraunces,serif;color:var(--navy)}
+.stat b{display:block;font:700 1.8rem Fraunces,serif;color:var(--navy)}
 .stat span{color:var(--muted);font-size:.9rem}
 
 /* cards */
@@ -62,6 +66,15 @@ nav .wrap{display:flex;align-items:center;gap:20px;height:58px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
 .card p{margin:.3em 0 0;color:var(--muted)}
 .tag{display:inline-block;font:500 .72rem "JetBrains Mono",monospace;padding:3px 8px;border-radius:6px;background:var(--cherry-soft);color:var(--cherry);margin-bottom:10px}
+.icon{font-size:1.5rem;margin-bottom:8px}
+
+/* fit checklist */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.fit ul{list-style:none;padding:0;margin:0}
+.fit li{padding:10px 0 10px 30px;border-bottom:1px solid var(--line);position:relative}
+.fit li:last-child{border:0}
+.fit .yes li::before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:700}
+.fit .no li::before{content:"–";position:absolute;left:6px;color:var(--muted);font-weight:700}
 
 /* profile ladder */
 .ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end;margin-top:32px}
@@ -72,22 +85,12 @@ nav .wrap{display:flex;align-items:center;gap:20px;height:58px}
 .s1{background:#5a6fa8;min-height:110px}.s2{background:#3b4f8c;min-height:150px}
 .s3{background:#283a73;min-height:190px}.s4{background:#14234b;min-height:230px}
 .ladder-detail{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--cherry);border-radius:var(--radius);padding:20px}
+.ladder-detail p{margin:.2em 0 0;color:var(--muted)}
 
-/* parts table */
-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
-th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
-th{background:var(--navy-2);color:#fff;font-weight:600}
-:root[data-theme="dark"] th{color:#0e1222}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) th{color:#0e1222}}
-td code{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--cherry);white-space:nowrap}
-.tbl{overflow-x:auto;margin-top:24px}
-
-/* process explorer */
+/* tabs & explorer */
 .tabs{display:flex;gap:8px;margin:28px 0 18px;flex-wrap:wrap}
 .tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:999px;cursor:pointer;font:600 .92rem Inter}
-.tab.on{background:var(--navy-2);color:#fff;border-color:var(--navy-2)}
-:root[data-theme="dark"] .tab.on{color:#0e1222}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab.on{color:#0e1222}}
+.tab.on{background:var(--navy-2);color:var(--on-accent);border-color:var(--navy-2)}
 .explorer{display:grid;grid-template-columns:280px 1fr;gap:16px}
 .acts{display:flex;flex-direction:column;gap:8px}
 .act{text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:12px 14px;border-radius:10px;cursor:pointer;font:500 .93rem Inter}
@@ -95,43 +98,72 @@ td code{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--cher
 .act.on{border-color:var(--cherry);box-shadow:inset 4px 0 0 var(--cherry)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
 .panel ul{padding-left:20px;margin:.4em 0 1em}
+.panel h4,.io h4{margin:16px 0 6px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.value{background:var(--cherry-soft);border-radius:10px;padding:12px 14px;margin-top:6px}
+.value b{color:var(--cherry)}
 .io{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.io div{background:var(--bg);border-radius:10px;padding:12px 14px}
-.io h4{margin:0 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.io div{background:var(--bg);border-radius:10px;padding:2px 14px 12px}
 .chip{display:inline-block;font-size:.8rem;padding:3px 9px;border-radius:999px;border:1px solid var(--line);margin:3px 4px 0 0;background:var(--surface)}
 
-/* flow diagram */
+/* flow */
 .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
-.node{padding:10px 14px;border-radius:10px;font-weight:600;font-size:.9rem;color:#fff}
-.node.pm{background:var(--pm)}.node.si{background:var(--si)}
-:root[data-theme="dark"] .node{color:#0e1222}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .node{color:#0e1222}}
+.node{padding:10px 14px;border-radius:10px;font-weight:600;font-size:.9rem;color:var(--on-accent)}
+.node.pm{background:var(--pm)}.node.si{background:var(--si)}.node.x{background:var(--muted)}
 .arrow{color:var(--muted)}
 
+/* deployment packages */
+.dp-anatomy{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;margin-top:28px;align-items:start}
+.anatomy{counter-reset:a;list-style:none;padding:0;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.anatomy li{counter-increment:a;padding:10px 16px;border-bottom:1px solid var(--line);font-size:.93rem;display:flex;gap:12px}
+.anatomy li:last-child{border:0}
+.anatomy li::before{content:counter(a,decimal-leading-zero);font:500 .78rem "JetBrains Mono",monospace;color:var(--cherry);padding-top:3px}
+.anatomy li.hl{background:var(--cherry-soft)}
+.dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}
+.dp{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column}
+.dp h3{font-size:1.05rem;margin-bottom:6px}
+.dp p{color:var(--muted);font-size:.92rem;margin:0 0 10px;flex:1}
+.dp .meta{font-size:.8rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.dp .covers{margin-bottom:8px}
+.dp .covers span{font:500 .72rem "JetBrains Mono",monospace;padding:2px 7px;border-radius:5px;margin-right:4px;color:var(--on-accent)}
+.c-pm{background:var(--pm)}.c-si{background:var(--si)}.c-all{background:var(--muted)}
+.th-flag{display:inline-block;font-size:.72rem;font-weight:600;color:var(--ok);margin-left:4px}
+
+/* roadmap */
+.road{list-style:none;padding:0;margin:32px 0 0;position:relative}
+.road::before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.road li{position:relative;padding:0 0 26px 64px}
+.road .n{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--navy-2);color:var(--on-accent);display:grid;place-items:center;font:700 1rem Fraunces,serif}
+.road h3{margin:8px 0 4px}
+.road p{margin:0;color:var(--muted);max-width:70ch}
+.road .dpref{font-size:.85rem;margin-top:6px}
+
+/* table */
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line)}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+th{background:var(--navy-2);color:var(--on-accent);font-weight:600}
+td code{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--cherry);white-space:nowrap}
+.tbl{overflow-x:auto;margin-top:24px;border-radius:var(--radius)}
+
 /* work products */
-.filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;align-items:center}
 .filter input{flex:1;min-width:200px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.filter .tab{margin:0}
 .wp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:18px}
 .wp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .wp b{display:block;color:var(--navy)}
 .wp small{color:var(--muted)}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
 
-/* quiz */
-.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-top:14px}
-.q p{margin:0 0 10px;font-weight:600}
-.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;font:inherit}
-.opt.right{border-color:#2e8b57;background:color-mix(in srgb,#2e8b57 14%,var(--surface))}
-.opt.wrong{border-color:var(--cherry);background:var(--cherry-soft)}
-.why{font-size:.92rem;color:var(--muted);margin-top:8px;display:none}
-.score{margin-top:18px;font:600 1.05rem Fraunces,serif;color:var(--navy)}
+/* faq */
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:10px}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+details p{color:var(--muted);margin:.6em 0 0}
 
 footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
 
 @media (max-width:760px){
   .ladder{grid-template-columns:repeat(2,1fr)}
-  .explorer{grid-template-columns:1fr}
-  .io{grid-template-columns:1fr}
+  .explorer,.dp-anatomy,.fit,.io{grid-template-columns:1fr}
   section{padding:48px 0}
 }
 </style>
@@ -142,8 +174,9 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   <div class="wrap">
     <a class="brand" href="#top">ISO/IEC <span>29110</span></a>
     <div class="links">
-      <a href="#what">What</a><a href="#profiles">Profiles</a><a href="#parts">Parts</a>
-      <a href="#basic">Basic Profile</a><a href="#roles">Roles</a><a href="#products">Work Products</a><a href="#quiz">Quiz</a>
+      <a href="#value">Business value</a><a href="#fit">Is it for you?</a><a href="#profiles">Profiles</a>
+      <a href="#basic">What you implement</a><a href="#dp">Deployment Packages</a><a href="#roadmap">Roadmap</a>
+      <a href="#cert">Certification</a><a href="#products">Documents</a><a href="#faq">FAQ</a>
     </div>
     <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
   </div>
@@ -151,81 +184,86 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Software Engineering Standards · Study Guide</div>
-    <h1>Good engineering practice, sized for <em>very small</em> teams.</h1>
-    <p class="lead">ISO/IEC 29110 defines lifecycle profiles for Very Small Entities (VSEs): companies, departments or projects with up to 25 people. It gives small teams a lightweight, auditable way to plan projects and build software without the overhead of standards written for large organisations.</p>
+    <div class="eyebrow">For owners &amp; managers of small software businesses</div>
+    <h1>Win customer trust with a standard built for <em>small</em> companies.</h1>
+    <p class="lead">ISO/IEC 29110 is the international standard for software and systems development in Very Small Entities: companies, departments or project teams of up to 25 people. It gives you a proven, lightweight way to deliver on time, reduce rework, and show clients that your process meets an international benchmark, without the cost and paperwork of standards designed for large enterprises.</p>
+    <div class="cta">
+      <a class="btn primary" href="#roadmap">See the adoption roadmap</a>
+      <a class="btn ghost" href="#dp">Explore Deployment Packages</a>
+    </div>
     <div class="stats">
-      <div class="stat"><b>≤ 25</b><span>people in a VSE</span></div>
-      <div class="stat"><b>4</b><span>profiles in the Generic group</span></div>
-      <div class="stat"><b>2</b><span>processes: PM &amp; SI</span></div>
-      <div class="stat"><b>10</b><span>activities in the Basic profile</span></div>
+      <div class="stat"><b>≤ 25</b><span>people: the size it's designed for</span></div>
+      <div class="stat"><b>2</b><span>core processes: manage the project, build the product</span></div>
+      <div class="stat"><b>10</b><span>free Deployment Packages for the Basic profile</span></div>
+      <div class="stat"><b>4</b><span>profiles to grow with your business</span></div>
     </div>
   </div>
 </header>
 
-<section id="what">
+<section id="value">
   <div class="wrap">
-    <div class="eyebrow">01 · Why it exists</div>
-    <h2>The problem 29110 solves</h2>
-    <p class="lead">Most software is built by small organisations, yet standards such as ISO/IEC/IEEE 12207 and models like CMMI are hard for a five-person team to adopt. ISO/IEC 29110 extracts a coherent subset of those practices and packages it with free, practical guides.</p>
+    <div class="eyebrow">01 · Business value</div>
+    <h2>Why small companies adopt it</h2>
+    <p class="lead">Most software is built by small firms, but most quality standards were written for large ones. ISO/IEC 29110 takes the practices that matter most and packages them at a scale a small team can actually run.</p>
     <div class="grid">
-      <div class="card"><span class="tag">VSE</span><h3>Who it's for</h3><p>Start-ups, small software houses, internal IT teams and individual projects of up to 25 people.</p></div>
-      <div class="card"><span class="tag">PROFILE</span><h3>What it contains</h3><p>A "profile" is a selected set of processes, activities, tasks, roles and work products drawn from larger base standards.</p></div>
-      <div class="card"><span class="tag">GUIDE</span><h3>How it's used</h3><p>Management &amp; Engineering Guides describe exactly what to do, who does it, and what each activity produces.</p></div>
-      <div class="card"><span class="tag">CERT</span><h3>How it's verified</h3><p>VSEs can be assessed or certified against a profile, which signals process maturity to customers.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3>Win more contracts</h3><p>Certification is independent evidence of a disciplined process. That helps in government tenders, with enterprise clients, and with overseas customers who ask "what's your quality process?"</p></div>
+      <div class="card"><div class="icon">📅</div><h3>Deliver predictably</h3><p>A written plan, regular progress tracking and formal change control mean fewer surprises on scope, schedule and budget.</p></div>
+      <div class="card"><div class="icon">🐞</div><h3>Cut rework</h3><p>Agreed requirements, reviews and planned testing catch defects early, when they are cheapest to fix.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>Reduce key-person risk</h3><p>Version control, traceability and maintenance documentation keep knowledge in the company, not just in one developer's head.</p></div>
+      <div class="card"><div class="icon">💰</div><h3>Affordable to adopt</h3><p>The management and engineering guides and Deployment Packages are freely available, and you can adopt practices one at a time.</p></div>
+      <div class="card"><div class="icon">📈</div><h3>Room to grow</h3><p>Four profiles let you start small and move up as your team and number of projects grow.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="wrap">
+    <div class="eyebrow">02 · Fit check</div>
+    <h2>Is ISO/IEC 29110 right for your business?</h2>
+    <div class="fit">
+      <div class="card yes"><h3>A good fit if you…</h3><ul>
+        <li>Have up to 25 people in the company, department or project</li>
+        <li>Build software (or systems) for customers or for internal users</li>
+        <li>Want clients and partners to see evidence of a quality process</li>
+        <li>Have had projects slip on schedule, budget or scope</li>
+        <li>Rely heavily on a few key people's knowledge</li>
+      </ul></div>
+      <div class="card no"><h3>Consider other standards if you…</h3><ul>
+        <li>Build safety-critical systems (medical, aviation, automotive); these need domain standards</li>
+        <li>Have well over 25 people in development, where ISO/IEC/IEEE 12207 or CMMI may fit better</li>
+        <li>Need a company-wide management system rather than a development process (e.g. ISO 9001)</li>
+        <li>Mainly need information security certification (ISO/IEC 27001)</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
 <section id="profiles">
   <div class="wrap">
-    <div class="eyebrow">02 · Generic Profile Group</div>
-    <h2>Four profiles, one growth path</h2>
-    <p class="lead">Profiles are progressive. A VSE can start small and move up as it grows. Click a step to see what it adds.</p>
+    <div class="eyebrow">03 · Generic Profile Group</div>
+    <h2>Pick the profile that matches your company today</h2>
+    <p class="lead">Profiles are a growth path. Most companies start with Entry or Basic. Click a level to see who it's for.</p>
     <div class="ladder" id="ladder"></div>
     <div class="ladder-detail" id="ladderDetail"></div>
   </div>
 </section>
 
-<section id="parts">
-  <div class="wrap">
-    <div class="eyebrow">03 · Document set</div>
-    <h2>How the standard is organised</h2>
-    <p class="lead">ISO/IEC 29110 is a family of documents. Parts 1, 2 and 4 are aimed at standards producers and assessors; Part 5 guides are written for the VSE itself.</p>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>Part</th><th>Title (short)</th><th>Main audience</th></tr></thead>
-        <tbody>
-          <tr><td><code>29110-1</code></td><td>Overview: concepts, terms and the VSE context</td><td>Everyone</td></tr>
-          <tr><td><code>29110-2</code></td><td>Framework and taxonomy for creating profiles</td><td>Standards producers</td></tr>
-          <tr><td><code>29110-3</code></td><td>Assessment, certification and audit guidance</td><td>Assessors, auditors, VSEs</td></tr>
-          <tr><td><code>29110-4</code></td><td>Profile specifications (normative requirements)</td><td>Standards producers, tool vendors</td></tr>
-          <tr><td><code>29110-5</code></td><td>Management &amp; Engineering Guides for each profile</td><td><strong>VSEs and students</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="color:var(--muted);font-size:.9rem;margin-top:12px">Parallel guides also exist for systems engineering (systems that include hardware as well as software) and for agile and DevOps contexts.</p>
-  </div>
-</section>
-
 <section id="basic">
   <div class="wrap">
-    <div class="eyebrow">04 · The Basic Profile</div>
-    <h2>Two processes that work together</h2>
-    <p class="lead">The Basic profile is the most widely taught. <strong style="color:var(--pm)">Project Management (PM)</strong> plans and controls the work; <strong style="color:var(--si)">Software Implementation (SI)</strong> builds the product. The Statement of Work from the customer kicks everything off.</p>
-
+    <div class="eyebrow">04 · What you implement</div>
+    <h2>The Basic profile in business terms</h2>
+    <p class="lead"><strong style="color:var(--pm)">Project Management (PM)</strong> keeps the work on plan and the customer informed. <strong style="color:var(--si)">Software Implementation (SI)</strong> turns requirements into a tested, delivered product. Everything starts from the customer's Statement of Work.</p>
     <div class="flow" aria-label="Basic profile flow">
-      <span class="node" style="background:var(--muted)">Statement of Work</span><span class="arrow">→</span>
-      <span class="node pm">PM.1 Planning</span><span class="arrow">→</span>
-      <span class="node pm">PM.2 Execution ⇄ PM.3 Control</span><span class="arrow">⇄</span>
-      <span class="node si">SI.1 – SI.6</span><span class="arrow">→</span>
-      <span class="node pm">PM.4 Closure</span><span class="arrow">→</span>
-      <span class="node" style="background:var(--muted)">Delivered product</span>
+      <span class="node x">Customer's Statement of Work</span><span class="arrow">→</span>
+      <span class="node pm">PM.1 Plan</span><span class="arrow">→</span>
+      <span class="node pm">PM.2 Execute ⇄ PM.3 Control</span><span class="arrow">⇄</span>
+      <span class="node si">SI.1 – SI.6 Build</span><span class="arrow">→</span>
+      <span class="node pm">PM.4 Close</span><span class="arrow">→</span>
+      <span class="node x">Accepted product</span>
     </div>
-
     <div class="tabs">
-      <button class="tab on" data-proc="PM">Project Management (PM)</button>
-      <button class="tab" data-proc="SI">Software Implementation (SI)</button>
+      <button class="tab on" data-proc="PM">Project Management</button>
+      <button class="tab" data-proc="SI">Software Implementation</button>
     </div>
     <div class="explorer">
       <div class="acts" id="acts"></div>
@@ -234,22 +272,107 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   </div>
 </section>
 
+<section id="dp">
+  <div class="wrap">
+    <div class="eyebrow">05 · Deployment Packages</div>
+    <h2>Ready-made toolkits for putting the standard into practice</h2>
+    <p class="lead">A Deployment Package (DP) is a free, self-contained set of artefacts that helps a small company implement one part of ISO/IEC 29110: process steps, templates, checklists, a worked example and tool suggestions. You don't have to adopt the whole standard at once. Implement one package, see the benefit, then add the next.</p>
+
+    <div class="dp-anatomy">
+      <div>
+        <h3>What's inside every package</h3>
+        <p style="color:var(--muted);margin-top:0">All DPs follow the same 12-part structure, so once your team has used one, the rest feel familiar. The highlighted parts are the ones staff use day-to-day.</p>
+        <div class="card" style="margin-top:14px">
+          <span class="tag">TIP</span>
+          <p style="margin:0">Section 3 maps the package to the exact ISO/IEC 29110 tasks it covers, and Section 10 to other standards such as ISO 9001, ISO/IEC/IEEE 12207 and CMMI. That's useful evidence when preparing for an audit.</p>
+        </div>
+      </div>
+      <ol class="anatomy">
+        <li>Technical description: purpose and why the topic matters</li>
+        <li>Definitions</li>
+        <li>Relationships with ISO/IEC 29110</li>
+        <li>Overview of processes, activities, tasks, roles and products</li>
+        <li class="hl">Step-by-step description of tasks, roles, products and artefacts</li>
+        <li class="hl">Templates</li>
+        <li class="hl">Worked example</li>
+        <li class="hl">Checklists</li>
+        <li class="hl">Tools</li>
+        <li>References to other standards and models</li>
+        <li>References</li>
+        <li>Evaluation form (feedback to the authors)</li>
+      </ol>
+    </div>
+
+    <h3 style="margin-top:44px">Packages for the Software Engineering Basic profile</h3>
+    <div class="tabs" id="dpFilter">
+      <button class="tab on" data-dp="all">All packages</button>
+      <button class="tab" data-dp="PM">Supports PM</button>
+      <button class="tab" data-dp="SI">Supports SI</button>
+      <button class="tab" data-dp="start">Getting started</button>
+    </div>
+    <div class="dp-grid" id="dpGrid"></div>
+
+    <div class="grid" style="margin-top:28px">
+      <div class="card"><span class="tag">ENTRY PROFILE</span><h3>Starter packages</h3><p>Two draft packages, Project Management and Software Implementation, support the Entry profile for start-ups and projects of about six person-months or less. A separate package describes a highly iterative process for the Entry profile.</p></div>
+      <div class="card"><span class="tag">SYSTEMS ENGINEERING</span><h3>For hardware + software</h3><p>The INCOSE VSE working group has produced a set of packages for the Systems Engineering Basic profile, for companies whose products combine hardware and software.</p></div>
+      <div class="card"><span class="tag">TOOL GUIDES</span><h3>Implementation guides</h3><p>Short guides show how to run specific practices with common tools, for example version control and issue tracking. Modern equivalents such as Git and Jira or GitHub Issues work just as well.</p></div>
+    </div>
+    <p style="margin-top:20px"><a href="https://profs.etsmtl.ca/claporte/english/VSE/VSE-packages.html" target="_blank" rel="noopener">Download all Deployment Packages (free) from the ÉTS Montréal repository →</a></p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">06 · Adoption roadmap</div>
+    <h2>From first step to certificate</h2>
+    <p class="lead">A typical path for a small company. Timelines vary, but working one Deployment Package at a time keeps the effort manageable alongside client work.</p>
+    <ol class="road">
+      <li><span class="n">1</span><h3>Get commitment and a champion</h3><p>Management agrees on the business goal (e.g. win tenders, reduce overruns) and names one person to lead the improvement effort.</p></li>
+      <li><span class="n">2</span><h3>Assess where you are</h3><p>Compare current practices with the Basic profile to find the gaps that matter most to the business.</p><p class="dpref"><span class="tag">DP</span> Self-Assessment</p></li>
+      <li><span class="n">3</span><h3>Pick a pilot project</h3><p>Choose a real but low-risk project to trial the new practices before rolling them out company-wide.</p><p class="dpref"><span class="tag">DP</span> Select and Conduct Pilot Projects</p></li>
+      <li><span class="n">4</span><h3>Deploy packages incrementally</h3><p>Start with the foundations (Project Management, Version Control, Requirements Analysis), then add design, construction, testing, verification and delivery practices.</p><p class="dpref"><span class="tag">DP</span> One package at a time, guided by the gap analysis</p></li>
+      <li><span class="n">5</span><h3>Use it on real projects and keep evidence</h3><p>Run at least one full project with the new process. Keep the plans, records and reports: these are what an auditor will look at.</p></li>
+      <li><span class="n">6</span><h3>Internal review, then certification</h3><p>Run an internal check against the profile, fix gaps, then engage an accredited certification body for the audit.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="cert">
+  <div class="wrap">
+    <div class="eyebrow">07 · Certification</div>
+    <h2>Getting independently recognised</h2>
+    <p class="lead">Part 3 of the standard defines how VSEs are assessed, audited and certified. Certification is done by an accredited certification body against a specific profile, usually Entry or Basic for a first certificate.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Part</th><th>What it covers</th><th>Why it matters to you</th></tr></thead>
+        <tbody>
+          <tr><td><code>29110-1</code></td><td>Overview, concepts and terms</td><td>Common vocabulary for your team and clients</td></tr>
+          <tr><td><code>29110-3</code></td><td>Assessment, certification and audit guidance</td><td>Defines how your company will be evaluated</td></tr>
+          <tr><td><code>29110-4</code></td><td>Profile specifications (the formal requirements)</td><td>What the auditor checks against</td></tr>
+          <tr><td><code>29110-5</code></td><td>Management &amp; Engineering Guides</td><td><strong>The practical "how-to" your team follows</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;margin-top:12px">Ask your national standards body or software industry promotion agency about accredited certifiers and any support programmes for small companies.</p>
+  </div>
+</section>
+
 <section id="roles">
   <div class="wrap">
-    <div class="eyebrow">05 · Roles</div>
-    <h2>Who does what</h2>
-    <p class="lead">In a VSE one person often holds several roles. The standard defines the responsibilities, not the job titles.</p>
+    <div class="eyebrow">08 · Roles</div>
+    <h2>You don't need to hire seven people</h2>
+    <p class="lead">The standard defines responsibilities, not headcount. In a small company one person typically covers several roles. The only rule of thumb is that work should be checked by someone other than its author.</p>
     <div class="grid" id="roleGrid"></div>
   </div>
 </section>
 
 <section id="products">
   <div class="wrap">
-    <div class="eyebrow">06 · Work products</div>
-    <h2>The artefacts you'll produce</h2>
-    <p class="lead">Every activity consumes and produces work products. Search or filter to see where each one comes from.</p>
+    <div class="eyebrow">09 · Key documents</div>
+    <h2>The records your process produces</h2>
+    <p class="lead">These work products are also the evidence an auditor looks for. Most can be lightweight: a page, a spreadsheet, a ticket or a wiki entry is often enough.</p>
     <div class="filter">
-      <input id="wpSearch" type="search" placeholder="Search work products…">
+      <input id="wpSearch" type="search" placeholder="Search documents…">
       <button class="tab on" data-wp="all">All</button>
       <button class="tab" data-wp="PM">PM</button>
       <button class="tab" data-wp="SI">SI</button>
@@ -258,20 +381,22 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   </div>
 </section>
 
-<section id="quiz">
+<section id="faq">
   <div class="wrap">
-    <div class="eyebrow">07 · Check yourself</div>
-    <h2>Quick quiz</h2>
-    <p class="lead">Five questions on the essentials. Pick an answer to see the explanation.</p>
-    <div id="quizBox"></div>
-    <div class="score" id="score"></div>
+    <div class="eyebrow">10 · FAQ</div>
+    <h2>Common questions from business owners</h2>
+    <details><summary>Does it work with Agile or Scrum?</summary><p>Yes. ISO/IEC 29110 says <em>what</em> must be done and produced, not which method to use. Sprint planning, backlogs, reviews and retrospectives can provide the required activities and records, and guidance exists for agile contexts.</p></details>
+    <details><summary>How much documentation will it add?</summary><p>Less than most people expect. The Basic profile asks for a focused set of work products, and many can live in tools you already use: an issue tracker, a Git repository, a shared drive or a wiki.</p></details>
+    <details><summary>How is it different from ISO 9001 or CMMI?</summary><p>ISO 9001 is a general quality management system for any organisation; CMMI is a maturity model aimed mainly at larger organisations. ISO/IEC 29110 is specific to software and systems development and is sized for teams of up to 25. The Deployment Packages include mappings to ISO 9001, ISO/IEC/IEEE 12207 and CMMI if you plan to pursue those later.</p></details>
+    <details><summary>Do we need a consultant?</summary><p>Not necessarily. The guides and Deployment Packages are designed so a small company can implement them itself. Some firms use a coach for the gap assessment or a pre-audit review.</p></details>
+    <details><summary>Where should we start?</summary><p>Run the Self-Assessment package, choose a pilot project, then deploy Project Management and Version Control first. They give the quickest visible benefit.</p></details>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p><strong>Further reading.</strong> ISO/IEC TR 29110-5-1-2 (Basic profile Management &amp; Engineering Guide) is freely available from the ISO <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/" target="_blank" rel="noopener">Publicly Available Standards</a> page. Prof. Claude Y. Laporte's ISO 29110 resources (ÉTS Montréal) include deployment packages and case studies.</p>
-    <p>This page is an educational summary prepared for teaching. It paraphrases the standard and does not replace the official ISO/IEC documents.</p>
+    <p><strong>Resources.</strong> ISO/IEC TR 29110-5-1-2 (Basic profile guide) is freely available from the ISO <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/" target="_blank" rel="noopener">Publicly Available Standards</a> page. Deployment Packages are available from <a href="https://profs.etsmtl.ca/claporte/english/VSE/VSE-packages.html" target="_blank" rel="noopener">Prof. Claude Y. Laporte's repository</a> at ÉTS Montréal.</p>
+    <p>This page is an informative summary. It paraphrases the standard and does not replace the official ISO/IEC documents. Deployment Packages are informative and provided "as is" by their authors.</p>
   </div>
 </footer>
 
@@ -289,60 +414,71 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
 /* ---------- profiles ---------- */
 const profiles=[
-  {n:'Entry',c:'s1',sub:'Start-ups & tiny projects',d:'For VSEs starting out, or projects of roughly six person-months or less. Keeps only the essential PM and SI tasks so a newly formed team can establish basic discipline: a plan, agreed requirements, testing and controlled delivery.'},
-  {n:'Basic',c:'s2',sub:'One project, one team',d:'For a VSE developing a single application with a single work team. Defines the full PM (4 activities) and SI (6 activities) processes, roles and work products. This is the profile most often used for teaching and certification.'},
-  {n:'Intermediate',c:'s3',sub:'Several projects at once',d:'For VSEs running more than one project in parallel. Adds organisational-level practices such as business management, portfolio management and handling of resources shared across projects.'},
-  {n:'Advanced',c:'s4',sub:'Growing, competitive VSEs',d:'For VSEs that want to sustain and grow as an independent, competitive business. Builds on Intermediate with stronger business and organisational management practices.'}
+  {n:'Entry',c:'s1',sub:'Start-ups & small jobs',d:'For start-ups and small projects of roughly six person-months or less. Covers the essentials (a plan, agreed requirements, testing and controlled delivery) and is the stepping stone to Basic.'},
+  {n:'Basic',c:'s2',sub:'One project at a time',d:'For companies developing one application at a time with a single team. The most widely adopted and certified profile, with the full set of Deployment Packages available.'},
+  {n:'Intermediate',c:'s3',sub:'Several projects in parallel',d:'For companies running multiple projects at once. Adds organisation-level practices such as portfolio management, business management and sharing resources across projects.'},
+  {n:'Advanced',c:'s4',sub:'Growing, competitive firms',d:'For companies that want to sustain and grow as independent, competitive businesses. Builds on Intermediate with stronger business and organisational management.'}
 ];
 const ladder=document.getElementById('ladder'), ld=document.getElementById('ladderDetail');
 profiles.forEach((p,i)=>{
   const el=document.createElement('div'); el.className='step '+p.c+(i===1?' active':'');
-  el.innerHTML=`<small>Profile ${i+1}</small><h3>${p.n}</h3><small>${p.sub}</small>`;
+  el.innerHTML=`<small>Level ${i+1}</small><h3>${p.n}</h3><small>${p.sub}</small>`;
   el.onclick=()=>{document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));el.classList.add('active');showProfile(p)};
   ladder.appendChild(el);
 });
-function showProfile(p){ld.innerHTML=`<h3>${p.n} profile</h3><p style="margin:0;color:var(--muted)">${p.d}</p>`}
+function showProfile(p){ld.innerHTML=`<h3>${p.n} profile</h3><p>${p.d}</p>`}
 showProfile(profiles[1]);
 
 /* ---------- activities ---------- */
 const acts={
  PM:[
-  {id:'PM.1',t:'Project Planning',obj:'Produce the Project Plan and agree it with the customer, based on the Statement of Work.',
-   tasks:['Review the Statement of Work','Define delivery instructions and the task list','Estimate effort, duration and resources','Identify risks and define a version-control strategy','Get the plan accepted by the customer'],
-   in:['Statement of Work'],out:['Project Plan','Project Repository','Verification Results','Meeting Record'],r:['PJM','TL','CUS']},
-  {id:'PM.2',t:'Project Plan Execution',obj:'Carry out the plan, record progress, and handle change requests.',
-   tasks:['Monitor the plan and record actual results','Analyse and evaluate change requests','Hold review meetings with the work team and customer','Back up the project repository'],
-   in:['Project Plan','Change Request'],out:['Progress Status Record','Change Request (evaluated)','Meeting Record','Project Repository Backup'],r:['PJM','TL','WT','CUS']},
-  {id:'PM.3',t:'Project Assessment and Control',obj:'Compare actual progress with the plan and take corrective action when needed.',
-   tasks:['Evaluate progress against the plan (cost, schedule, risks)','Establish corrective actions','Track corrective actions to closure'],
-   in:['Project Plan','Progress Status Record'],out:['Correction Register','Progress Status Record (updated)'],r:['PJM','TL','WT']},
-  {id:'PM.4',t:'Project Closure',obj:'Deliver the product formally and obtain the customer\'s acceptance.',
-   tasks:['Formalise completion of the project per the delivery instructions','Obtain the signed Acceptance Record','Update the project repository'],
-   in:['Project Plan','Software Configuration'],out:['Acceptance Record','Project Repository (final)'],r:['PJM','CUS']}
+  {id:'PM.1',t:'Project Planning',obj:'Turn the customer\'s Statement of Work into an agreed Project Plan.',
+   val:'Clear scope, realistic estimates and an agreed plan before work starts: the foundation for on-time, on-budget delivery.',
+   tasks:['Review the Statement of Work with the customer','Define tasks, schedule, effort and resources','Identify risks and the version-control approach','Get the plan accepted by the customer'],
+   in:['Statement of Work'],out:['Project Plan','Project Repository','Meeting Record'],dp:['Project Management','Version Control']},
+  {id:'PM.2',t:'Project Plan Execution',obj:'Carry out the plan, record progress and handle change requests.',
+   val:'Changes are evaluated for cost and schedule impact before you commit, which protects margins and avoids scope creep.',
+   tasks:['Record actual progress against the plan','Evaluate change requests','Hold review meetings with the team and customer','Back up the project repository'],
+   in:['Project Plan','Change Request'],out:['Progress Status Record','Meeting Record'],dp:['Project Management']},
+  {id:'PM.3',t:'Project Assessment and Control',obj:'Compare progress with the plan and correct course early.',
+   val:'Problems surface while they are still cheap to fix, not at the deadline.',
+   tasks:['Compare actual vs planned cost, schedule and risks','Agree corrective actions','Track them to closure'],
+   in:['Project Plan','Progress Status Record'],out:['Correction Register'],dp:['Project Management']},
+  {id:'PM.4',t:'Project Closure',obj:'Deliver formally and obtain the customer\'s written acceptance.',
+   val:'A signed Acceptance Record closes the contract cleanly and supports invoicing.',
+   tasks:['Complete delivery per agreed instructions','Obtain the signed Acceptance Record','Archive the project repository'],
+   in:['Project Plan','Software Configuration'],out:['Acceptance Record'],dp:['Project Management','Product Delivery']}
  ],
  SI:[
-  {id:'SI.1',t:'Software Implementation Initiation',obj:'Make sure the team understands and commits to the Project Plan.',
-   tasks:['Review the Project Plan with the work team','Set up the implementation environment'],
-   in:['Project Plan'],out:['Project Plan (reviewed)','Implementation environment'],r:['TL','WT']},
-  {id:'SI.2',t:'Software Requirements Analysis',obj:'Establish requirements that are agreed, verified and validated with the customer.',
-   tasks:['Elicit and document requirements','Verify the Requirements Specification','Validate it with the customer','Draft the user documentation (optional)','Baseline in the repository'],
-   in:['Project Plan'],out:['Requirements Specification','Verification Results','Validation Results','Change Request','Software User Documentation (prelim.)'],r:['AN','CUS','TL','PJM']},
-  {id:'SI.3',t:'Software Architectural and Detailed Design',obj:'Transform requirements into an architecture and detailed design, with traceability.',
-   tasks:['Produce architectural and detailed design','Define test cases and procedures','Update the Traceability Record','Verify the design'],
-   in:['Requirements Specification'],out:['Software Design','Test Cases and Test Procedures','Traceability Record','Verification Results'],r:['DES','TL','AN']},
-  {id:'SI.4',t:'Software Construction',obj:'Write the code and data according to the design, and unit-test the components.',
-   tasks:['Construct or update software components','Design and run unit tests','Correct defects','Update the Traceability Record'],
-   in:['Software Design','Traceability Record'],out:['Software Components','Traceability Record (updated)'],r:['PR','TL']},
-  {id:'SI.5',t:'Software Integration and Tests',obj:'Integrate components and confirm the software satisfies the requirements.',
-   tasks:['Integrate the software','Run integration and system tests','Record results in the Test Report','Correct defects','Produce the Product Operation Guide'],
-   in:['Software Components','Test Cases and Test Procedures'],out:['Software','Test Report','Product Operation Guide','Software User Documentation'],r:['PR','TL','CUS']},
-  {id:'SI.6',t:'Product Delivery',obj:'Package the product and hand it over according to the delivery instructions.',
-   tasks:['Prepare Maintenance Documentation','Verify all documentation','Incorporate the Software Configuration into the baseline','Deliver to the customer'],
-   in:['Software','Project Plan'],out:['Software Configuration','Maintenance Documentation','Verification Results'],r:['TL','PJM','CUS']}
+  {id:'SI.1',t:'Implementation Initiation',obj:'Make sure the team understands and commits to the plan.',
+   val:'Everyone starts from the same understanding of scope and schedule.',
+   tasks:['Review the Project Plan with the team','Set up the development environment'],
+   in:['Project Plan'],out:['Reviewed plan','Ready environment'],dp:['Project Management']},
+  {id:'SI.2',t:'Requirements Analysis',obj:'Agree, verify and validate requirements with the customer.',
+   val:'Most project failures start with misunderstood requirements. Agreeing them up front reduces disputes and rework.',
+   tasks:['Elicit and document requirements','Verify and validate them with the customer','Baseline them under version control'],
+   in:['Project Plan'],out:['Requirements Specification','Validation Results'],dp:['Requirements Analysis','Verification and Validation']},
+  {id:'SI.3',t:'Architecture and Detailed Design',obj:'Design the solution and plan the tests, with traceability to requirements.',
+   val:'A documented design reduces dependence on any one developer and makes changes safer.',
+   tasks:['Produce architectural and detailed design','Define test cases and procedures','Update the Traceability Record'],
+   in:['Requirements Specification'],out:['Software Design','Test Cases and Test Procedures','Traceability Record'],dp:['Architecture and Detailed Design','Verification and Validation']},
+  {id:'SI.4',t:'Construction',obj:'Build and unit-test the software components.',
+   val:'Defects are caught at the cheapest point: while the code is being written.',
+   tasks:['Build software components','Write and run unit tests','Correct defects'],
+   in:['Software Design'],out:['Software Components'],dp:['Construction and Unit Testing','Version Control']},
+  {id:'SI.5',t:'Integration and Tests',obj:'Integrate the components and prove the system meets the requirements.',
+   val:'A Test Report gives you, and your customer, evidence that what was agreed was delivered.',
+   tasks:['Integrate the software','Run integration and system tests','Record results and fix defects','Prepare operation and user guides'],
+   in:['Software Components','Test Cases and Test Procedures'],out:['Test Report','Product Operation Guide','Software User Documentation'],dp:['Software Testing and Integration']},
+  {id:'SI.6',t:'Product Delivery',obj:'Package and hand over the product, ready for support.',
+   val:'Clean handover with maintenance documentation lowers your support costs after go-live.',
+   tasks:['Prepare maintenance documentation','Verify all deliverables','Baseline and deliver the Software Configuration'],
+   in:['Software'],out:['Software Configuration','Maintenance Documentation'],dp:['Product Delivery','Version Control']}
  ]
 };
 let cur='PM';
 const actsEl=document.getElementById('acts'), panel=document.getElementById('panel');
+const chips=a=>a.map(x=>`<span class="chip">${x}</span>`).join('');
 function renderActs(){
   actsEl.innerHTML='';
   acts[cur].forEach((a,i)=>{
@@ -353,90 +489,93 @@ function renderActs(){
   });
   renderPanel(acts[cur][0]);
 }
-const chips=a=>a.map(x=>`<span class="chip">${x}</span>`).join('');
 function renderPanel(a){
   panel.innerHTML=`<div class="eyebrow" style="color:${cur==='PM'?'var(--pm)':'var(--si)'}">${a.id}</div>
-  <h3>${a.t}</h3><p style="color:var(--muted)">${a.obj}</p>
-  <h4 style="margin:16px 0 4px">Key tasks</h4><ul>${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+  <h3>${a.t}</h3><p style="color:var(--muted);margin-top:0">${a.obj}</p>
+  <div class="value"><b>Business value:</b> ${a.val}</div>
+  <h4>Key tasks</h4><ul>${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
   <div class="io"><div><h4>Main inputs</h4>${chips(a.in)}</div><div><h4>Main outputs</h4>${chips(a.out)}</div></div>
-  <h4 style="margin:16px 0 4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Roles involved</h4>${chips(a.r)}`;
+  <h4>Deployment Packages that help</h4>${a.dp.map(d=>`<a class="chip" href="#dp" style="text-decoration:none;color:var(--cherry)">📦 ${d}</a>`).join('')}`;
 }
 document.querySelectorAll('[data-proc]').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('[data-proc]').forEach(x=>x.classList.remove('on'));t.classList.add('on');cur=t.dataset.proc;renderActs();
 });
 renderActs();
 
+/* ---------- deployment packages ---------- */
+const dps=[
+  {n:'Self-Assessment',g:['start'],cov:[['ALL','c-all']],d:'Evaluate your current practices against the Basic profile and identify the gaps to tackle first.',a:'T. Varkoi (Tampere Univ. of Technology, Finland)'},
+  {n:'Select and Conduct Pilot Projects',g:['start'],cov:[['ALL','c-all']],d:'Plan and run a pilot project to trial new practices, with an assessment tool and templates for the pilot plan, pilot report and confidentiality agreement.',a:'C. Y. Laporte (ÉTS, Canada) & J. Triñanes (UDELAR, Uruguay)'},
+  {n:'Project Management',g:['PM'],cov:[['PM.1–4','c-pm']],d:'Plan the project, track progress, manage change and risks, and close with customer acceptance.',a:'R. O\'Connor (Ireland)'},
+  {n:'Version Control',g:['PM','SI'],cov:[['PM','c-pm'],['SI','c-si']],d:'Control versions of code and documents, and manage baselines and the project repository.',a:'S. Buasung with the Thai Industrial Standards Institute',th:true},
+  {n:'Requirements Analysis',g:['SI'],cov:[['SI.2','c-si']],d:'Elicit, document, verify and validate requirements with the customer. Training material and a traceability tool are also available.',a:'Developed with CETIC (Belgium)'},
+  {n:'Architecture and Detailed Design',g:['SI'],cov:[['SI.3','c-si']],d:'Translate requirements into an architecture and detailed design that the team can build and maintain.',a:'F. Guillemot & R. Champagne (ÉTS, Canada)'},
+  {n:'Construction and Unit Testing',g:['SI'],cov:[['SI.4','c-si']],d:'Coding practices and unit testing to catch defects as components are built.',a:'A. Vasquez (Mexico)'},
+  {n:'Software Testing and Integration',g:['SI'],cov:[['SI.5','c-si']],d:'Integrate components, run system tests and produce a Test Report as evidence of quality.',a:'L. Gómez Arenas (ParqueSoft, Colombia)'},
+  {n:'Verification and Validation',g:['SI'],cov:[['SI.2–6','c-si']],d:'Review kits and checklists for checking work products and confirming they meet the customer\'s needs.',a:'E. Palza (ÉTS, Canada)'},
+  {n:'Product Delivery',g:['SI','PM'],cov:[['SI.6','c-si'],['PM.4','c-pm']],d:'Package, document and hand over the product so it can be operated and maintained.',a:'C. Y. Laporte (ÉTS) with TISI and SIPA (Thailand)',th:true}
+];
+let dpf='all';
+const dpGrid=document.getElementById('dpGrid');
+function renderDp(){
+  dpGrid.innerHTML=dps.filter(p=>dpf==='all'||p.g.includes(dpf)).map(p=>`
+    <div class="dp">
+      <div class="covers">${p.cov.map(c=>`<span class="${c[1]}">${c[0]}</span>`).join('')}</div>
+      <h3>📦 ${p.n}</h3>
+      <p>${p.d}</p>
+      <div class="meta">${p.a}${p.th?'<span class="th-flag">· Thai contribution</span>':''}</div>
+    </div>`).join('');
+}
+document.querySelectorAll('[data-dp]').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('[data-dp]').forEach(x=>x.classList.remove('on'));t.classList.add('on');dpf=t.dataset.dp;renderDp();
+});
+renderDp();
+
 /* ---------- roles ---------- */
 const roles=[
-  ['CUS','Customer','Provides the Statement of Work, reviews progress, validates requirements and accepts the product.'],
-  ['PJM','Project Manager','Plans, leads and controls the project; manages risks, changes and customer communication.'],
-  ['TL','Technical Leader','Leads technical decisions, coordinates the work team and verifies technical work products.'],
-  ['WT','Work Team','The developers as a group, collectively responsible for producing the software.'],
-  ['AN','Analyst','Elicits, specifies and analyses requirements with the customer.'],
-  ['DES','Designer','Produces the architectural and detailed design.'],
-  ['PR','Programmer','Builds, unit-tests and integrates the software components.']
+  ['CUS','Customer','Provides the Statement of Work, joins reviews, validates requirements and signs acceptance.','Your client'],
+  ['PJM','Project Manager','Plans and controls the project; manages risk, change and customer communication.','Often the owner or a senior developer'],
+  ['TL','Technical Leader','Makes technical decisions, coordinates the team and checks technical work.','Lead developer'],
+  ['WT','Work Team','The development team, collectively responsible for the product.','All developers'],
+  ['AN','Analyst','Elicits and specifies requirements with the customer.','PM, BA or senior dev'],
+  ['DES','Designer','Produces the architecture and detailed design.','Lead or senior developer'],
+  ['PR','Programmer','Builds, unit-tests and integrates components.','Developers']
 ];
-document.getElementById('roleGrid').innerHTML=roles.map(r=>`<div class="card"><span class="tag">${r[0]}</span><h3>${r[1]}</h3><p>${r[2]}</p></div>`).join('');
+document.getElementById('roleGrid').innerHTML=roles.map(r=>`<div class="card"><span class="tag">${r[0]}</span><h3>${r[1]}</h3><p>${r[2]}</p><p style="font-size:.85rem;margin-top:8px"><strong style="color:var(--ink)">In a small firm:</strong> ${r[3]}</p></div>`).join('');
 
 /* ---------- work products ---------- */
 const wps=[
-  ['Statement of Work','PM','Input from the customer: product description, scope, deliverables, schedule.'],
-  ['Project Plan','PM','Tasks, schedule, resources, risks, version control and delivery instructions.'],
+  ['Statement of Work','PM','From the customer: scope, deliverables and schedule.'],
+  ['Project Plan','PM','Tasks, schedule, resources, risks and delivery instructions.'],
   ['Progress Status Record','PM','Actual vs planned progress, cost and schedule.'],
-  ['Meeting Record','PM','Agreements and action items from reviews.'],
-  ['Change Request','PM','A requested change to a work product, with its evaluation and status.'],
-  ['Correction Register','PM','Problems found and corrective actions to close them.'],
-  ['Acceptance Record','PM','The customer\'s formal acceptance of the delivery.'],
-  ['Project Repository','PM','Controlled storage for all project work products and their versions.'],
-  ['Requirements Specification','SI','Functional and non-functional requirements agreed with the customer.'],
-  ['Software Design','SI','Architectural and detailed design of the components and interfaces.'],
-  ['Traceability Record','SI','Links requirements to design, code and test cases.'],
-  ['Test Cases and Test Procedures','SI','What to test, expected results, and how to run each test.'],
+  ['Meeting Record','PM','Decisions and action items from reviews.'],
+  ['Change Request','PM','A requested change, its impact and decision.'],
+  ['Correction Register','PM','Problems found and corrective actions.'],
+  ['Acceptance Record','PM','Customer\'s formal sign-off on delivery.'],
+  ['Project Repository','PM','Controlled storage for all project work products.'],
+  ['Requirements Specification','SI','What the software must do, agreed with the customer.'],
+  ['Software Design','SI','Architecture and detailed design.'],
+  ['Traceability Record','SI','Links requirements to design, code and tests.'],
+  ['Test Cases and Test Procedures','SI','What to test and how.'],
   ['Test Report','SI','Results of integration and system testing.'],
-  ['Software Components','SI','Coded units, with unit tests.'],
-  ['Software Configuration','SI','The baselined set of software and documentation for delivery.'],
+  ['Software Configuration','SI','The baselined deliverable set.'],
   ['Software User Documentation','SI','How end-users operate the software.'],
-  ['Product Operation Guide','SI','Information needed to install and operate the product.'],
-  ['Maintenance Documentation','SI','What the maintainers need to support the software afterwards.'],
-  ['Verification Results','SI','Findings from checking a work product against its criteria.'],
-  ['Validation Results','SI','Findings from confirming a work product meets the customer\'s needs.']
+  ['Product Operation Guide','SI','How to install and run the product.'],
+  ['Maintenance Documentation','SI','What support staff need after go-live.'],
+  ['Verification / Validation Results','SI','Evidence that work products were checked and meet needs.']
 ];
 let wpf='all';
 const wpGrid=document.getElementById('wpGrid'), wpSearch=document.getElementById('wpSearch');
 function renderWp(){
   const q=wpSearch.value.toLowerCase();
   const list=wps.filter(w=>(wpf==='all'||w[1]===wpf)&&(w[0]+' '+w[2]).toLowerCase().includes(q));
-  wpGrid.innerHTML=list.length?list.map(w=>`<div class="wp"><b><span class="dot" style="background:${w[1]==='PM'?'var(--pm)':'var(--si)'}"></span>${w[0]}</b><small>${w[1]} · ${w[2]}</small></div>`).join(''):'<p style="color:var(--muted)">No matching work products.</p>';
+  wpGrid.innerHTML=list.length?list.map(w=>`<div class="wp"><b><span class="dot" style="background:${w[1]==='PM'?'var(--pm)':'var(--si)'}"></span>${w[0]}</b><small>${w[1]} · ${w[2]}</small></div>`).join(''):'<p style="color:var(--muted)">No matching documents.</p>';
 }
 wpSearch.oninput=renderWp;
 document.querySelectorAll('[data-wp]').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('[data-wp]').forEach(x=>x.classList.remove('on'));t.classList.add('on');wpf=t.dataset.wp;renderWp();
 });
 renderWp();
-
-/* ---------- quiz ---------- */
-const quiz=[
-  {q:'What is the maximum size of a Very Small Entity (VSE) in ISO/IEC 29110?',o:['10 people','25 people','50 people','100 people'],a:1,w:'A VSE is an enterprise, organisation, department or project with up to 25 people.'},
-  {q:'Which two processes make up the Basic profile?',o:['Requirements and Testing','Project Management and Software Implementation','Design and Construction','Quality Assurance and Configuration Management'],a:1,w:'The Basic profile has two processes: Project Management (PM) and Software Implementation (SI).'},
-  {q:'Which work product triggers the start of Project Planning (PM.1)?',o:['Requirements Specification','Test Report','Statement of Work','Acceptance Record'],a:2,w:'The customer\'s Statement of Work is the main input to PM.1.'},
-  {q:'Which record links requirements to design, code and tests?',o:['Traceability Record','Correction Register','Progress Status Record','Meeting Record'],a:0,w:'The Traceability Record is created in SI.2/SI.3 and updated through construction and testing.'},
-  {q:'Which part of the standard is written mainly for VSEs to use day-to-day?',o:['Part 1','Part 2','Part 4','Part 5'],a:3,w:'Part 5 contains the Management and Engineering Guides aimed directly at VSEs.'}
-];
-let score=0, answered=0;
-const qb=document.getElementById('quizBox'), sc=document.getElementById('score');
-quiz.forEach((item,qi)=>{
-  const d=document.createElement('div'); d.className='q';
-  d.innerHTML=`<p>${qi+1}. ${item.q}</p>`+item.o.map((o,oi)=>`<button class="opt" data-i="${oi}">${o}</button>`).join('')+`<div class="why">${item.w}</div>`;
-  d.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
-    if(d.dataset.done) return; d.dataset.done=1; answered++;
-    const pick=+b.dataset.i;
-    d.querySelectorAll('.opt')[item.a].classList.add('right');
-    if(pick===item.a) score++; else b.classList.add('wrong');
-    d.querySelector('.why').style.display='block';
-    sc.textContent=`Score: ${score} / ${answered}`+(answered===quiz.length?(score===quiz.length?' — excellent!':' — review the sections above and try again.'):'');
-  });
-  qb.appendChild(d);
-});
 </script>
 </body>
 </html>
