@@ -217,7 +217,7 @@ const members=[
   {c:'Italy',p:[]},{c:'Japan',p:[]},{c:'Korea',p:[]},{c:'Luxembourg',p:[]},{c:'Mexico',p:[]},
   {c:'South Africa',p:[]},
   {c:'Thailand',p:[
-    {name:'Prakit Sangpar',initials:'PS',role:'Convenor of WG24 · Thailand',photo:'images/prakit-sangpar.jpg',
+    {name:'Prakit Sangpar',initials:'PS',role:'Convenor of WG24 · Thailand',photo:'prakit-sangpar.jpg',
      bio:['Prakit Sangpar is a Thai digital industry and standards specialist. In 2021, he served as an adviser to the Digital Industry Club of the Federation of Thai Industries and represented Thailand in international work on ISO/IEC 29110, a standards series for very small software and systems engineering organizations. He is the convenor of WG24.'],
      contrib:['Product Delivery Deployment Package (co-developer)']}
   ]},

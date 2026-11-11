@@ -6,7 +6,7 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 
 1. Create a free GitHub organization named `iso29110` (or use an account with that name).
 2. In it, create a public repository named exactly `iso29110.github.io`.
-3. Upload **all files** from the site folder (every `.html` page, the `images` folder, `style.css`, `site.js`) and this README to the root of the `main` branch. Upload them together so the links between pages work.
+3. Upload **all files** from the site folder (every `.html` page, `prakit-sangpar.jpg`, `style.css`, `site.js`) and this README to the root of the `main` branch. Upload them together so the links between pages work.
 4. Go to **Settings → Pages** and check that it deploys from branch `main`, folder `/ (root)`.
 5. After a minute or two the site is live at `https://iso29110.github.io`.
 
@@ -23,7 +23,7 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 | `certification.html` | Certification |
 | `publications.html` | Published articles and case studies, grouped by year, each linked to its source |
 | `faq.html` | FAQ |
-| `images/` | Photos (e.g. WG24 member photos) |
+| `prakit-sangpar.jpg` | Photo used in the WG24 members section |
 | `style.css` | Shared styles for all pages |
 | `site.js` | Shared scripts: dark mode and the interactive parts |
 
@@ -47,7 +47,7 @@ In `site.js`, find the `/* ---------- wg24 members ---------- */` block. Each co
 {name:'Full Name',initials:'FN',role:'WG24 member · Country',
  bio:['First paragraph.','Second paragraph.'],
  contrib:['Something they contributed'],
- photo:'images/their-photo.jpg'}   // optional: put a square photo in the images folder
+ photo:'their-photo.jpg'}   // optional: upload a square photo next to index.html
 ```
 
 ## Adding publications

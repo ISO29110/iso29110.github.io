@@ -235,7 +235,7 @@ button.step{font:inherit;text-align:left;width:100%}
 
 
 /* publications */
-.pub-jump{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 8px;}
+.pub-jump{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 8px}
 .pub-jump a{font:500 .85rem "JetBrains Mono",monospace;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);text-decoration:none;color:var(--navy)}
 .pub-jump a:hover{border-color:var(--cherry);color:var(--cherry)}
 .pub-year{margin-top:32px;scroll-margin-top:76px}
