@@ -207,3 +207,34 @@ document.querySelectorAll('[data-wp]').forEach(t=>t.onclick=()=>{
 renderWp();
 })();
 
+
+/* ---------- wg24 members ---------- */
+(function(){
+if(!document.getElementById('memberChips')) return;
+// Add people to a country's list to publish them. Each person: name, role, bio (paragraphs), contributions.
+const members=[
+  {c:'Belgium',p:[]},{c:'Canada',p:[]},{c:'Czech Republic',p:[]},{c:'India',p:[]},{c:'Ireland',p:[]},
+  {c:'Italy',p:[]},{c:'Japan',p:[]},{c:'Korea',p:[]},{c:'Luxembourg',p:[]},{c:'Mexico',p:[]},
+  {c:'South Africa',p:[]},
+  {c:'Thailand',p:[
+    {name:'Prakit Sangpar',initials:'PS',role:'WG24 member · Thailand',
+     bio:['Prakit Sangpar has worked on bringing ISO/IEC 29110 to Thai software companies. While with the Thailand Industrial Standards Institute (TISI), he co-developed the Product Delivery Deployment Package for the Basic profile with Claude Y. Laporte (ÉTS Montréal) and Sujimarn Suwannaroj of the Software Industry Promotion Agency (SIPA).'],
+     contrib:['Product Delivery Deployment Package (co-developer)']}
+  ]},
+  {c:'United Kingdom',p:[]},{c:'United States',p:[]}
+];
+const chips=document.getElementById('memberChips'), panel=document.getElementById('memberPanel');
+members.forEach((m,i)=>{
+  const b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab');
+  b.innerHTML=m.c+(m.p.length?`<span class="cnt">(${m.p.length})</span>`:'');
+  b.onclick=()=>{chips.querySelectorAll('button').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false')});b.classList.add('on');b.setAttribute('aria-selected','true');show(m)};
+  chips.appendChild(b);
+});
+function show(m){
+  if(!m.p.length){panel.innerHTML=`<p class="member-empty">Member profiles for ${m.c} will be added soon.</p>`;return;}
+  panel.innerHTML=m.p.map(x=>`<div class="person"><div class="avatar" aria-hidden="true">${x.initials}</div><div>
+    <h4>${x.name}</h4><div class="role">${x.role}</div>${x.bio.map(t=>`<p>${t}</p>`).join('')}
+    ${x.contrib&&x.contrib.length?`<div>${x.contrib.map(c=>`<span class="chip">📦 ${c}</span>`).join('')}</div>`:''}</div></div>`).join('');
+}
+})();
+
