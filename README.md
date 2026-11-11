@@ -20,6 +20,9 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 | `profiles.html` | The four profiles; selecting Level 1 shows Entry profile details, Level 2 shows Basic profile details (PM/SI, what's new in 2025, annexes). Direct links: `profiles.html#entry`, `profiles.html#basic` |
 | `profiles-systems.html` | Systems engineering profiles (ISO/IEC 29110-5-6-1 to 5-6-4), with sections `#se-entry`, `#se-basic`, `#se-intermediate`, `#se-advanced` |
 | `profiles-service.html` | Service delivery profile (ISO/IEC 29110-5-3) |
+| `profiles-org.html` | Organisational management profile (ISO/IEC 29110-5-2-1:2025) |
+| `profiles-agile.html` | Agile & DevOps guidelines: ISO/IEC 29110-5-4:2025 (`#agile`) and ISO/IEC 29110-5-5 (`#devops`) |
+| `profiles-specific.html` | Specific profiles: space software engineering guidelines (ISO/IEC 29110-7-1:2026) |
 | `deployment-packages.html` | Deployment Packages overview, with links to the two subpages |
 | `dp-software.html` | Software engineering Deployment Packages by level: Entry, Basic, Intermediate, Advanced (`#entry`, `#basic`, `#intermediate`, `#advanced`) |
 | `dp-systems.html` | Systems engineering Deployment Packages, linking to the INCOSE resource |

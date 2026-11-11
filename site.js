@@ -238,3 +238,10 @@ function show(m){
 }
 })();
 
+
+/* ---------- profiles sub-menu: keep the current tab visible on small screens ---------- */
+(function(){
+const s=document.querySelector('.subnav'); if(!s) return;
+const a=s.querySelector('[aria-current]'); if(!a||s.scrollWidth<=s.clientWidth) return;
+const l=a.offsetLeft-s.offsetLeft, r=l+a.offsetWidth; if(l<s.scrollLeft||r>s.scrollLeft+s.clientWidth) s.scrollLeft=Math.max(0,l-16);
+})();
