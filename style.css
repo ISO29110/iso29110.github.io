@@ -250,3 +250,30 @@ button.step{font:inherit;text-align:left;width:100%}
 .pub-by{color:var(--ink)}
 .pub-venue{font-style:italic}
 .pub-kind{font:500 .72rem "JetBrains Mono",monospace;padding:2px 8px;border-radius:6px;background:var(--cherry-soft);color:var(--cherry);align-self:center}
+
+/* deployment package paths */
+.dp-paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.dp-path{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--navy-2);border-radius:var(--radius);padding:24px;text-decoration:none;color:var(--ink);transition:transform .15s,border-color .15s}
+.dp-path:nth-child(2){border-top-color:var(--cherry)}
+.dp-path .tag{align-self:flex-start}
+.dp-path:hover{transform:translateY(-3px);border-color:var(--cherry)}
+.dp-path h3{margin:6px 0 6px;font-size:1.3rem}
+.dp-path p{margin:0;color:var(--muted);flex:1}
+.dp-path .lvls{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.dp-path .lvls span{font-size:.8rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.dp-path .go{font-weight:600;color:var(--cherry)}
+.level-jump{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
+.level-jump a{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--navy);font-weight:600;font-size:.92rem}
+.level-jump a:hover{border-color:var(--cherry);color:var(--cherry)}
+.level-jump a small{font-weight:500;color:var(--muted);margin-left:4px}
+.lvl{border-top:1px solid var(--line);margin-top:44px;padding-top:36px;scroll-margin-top:72px}
+.lvl-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.lvl-badge{font:500 .75rem "JetBrains Mono",monospace;color:var(--on-accent);background:var(--navy-2);padding:4px 10px;border-radius:6px}
+.lvl-head h2{margin:0}
+.pending{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:20px;margin-top:16px;color:var(--muted)}
+.ext-card{display:block;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--cherry);border-radius:var(--radius);padding:22px;margin-top:24px;text-decoration:none;color:var(--ink)}
+.ext-card:hover{border-color:var(--cherry)}
+.ext-card h3{margin:6px 0;color:var(--navy)}
+.ext-card p{margin:0;color:var(--muted)}
+.ext-card .go{display:inline-block;margin-top:12px;font-weight:600;color:var(--cherry)}
+@media (max-width:760px){.dp-paths{grid-template-columns:1fr}}

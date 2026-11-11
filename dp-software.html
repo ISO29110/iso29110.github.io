@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Engineering Deployment Packages · ISO/IEC 29110</title>
+<meta name="description" content="Deployment Packages for the ISO/IEC 29110 software engineering profiles, grouped by Entry, Basic, Intermediate and Advanced level.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">ISO/IEC <span>29110</span></a>
+    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Business Value</a><a href="profiles.html">Profiles</a><a href="deployment-packages.html" aria-current="page">Deployment Packages</a><a href="roadmap.html">Roadmap</a><a href="certification.html">Certification</a><a href="publications.html">Publications</a><a href="faq.html">FAQ</a></div>
+    <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
+  </div>
+</nav>
+
+<div class="wrap page-top"><div class="crumb"><a href="index.html">Home</a> / <a href="deployment-packages.html">Deployment Packages</a> / Software engineering</div></div>
+<main>
+<section id="dp-software">
+  <div class="wrap">
+
+    <div class="eyebrow">Deployment Packages · Software engineering</div>
+    <h2>Deployment Packages for the software engineering profiles</h2>
+    <p class="lead">Packages are grouped by profile level. Start with the level that matches your company today. Each package can be adopted on its own.</p>
+    <div class="level-jump" role="navigation" aria-label="Jump to profile level">
+      <a href="#entry">Level 1 · Entry</a><a href="#basic">Level 2 · Basic</a><a href="#intermediate">Level 3 · Intermediate</a><a href="#advanced">Level 4 · Advanced</a>
+    </div>
+
+    <div class="lvl" id="entry">
+      <div class="lvl-head"><span class="lvl-badge">LEVEL 1</span><h2>Entry profile</h2></div>
+      <p class="lead" style="margin-top:12px">For start-ups and small projects of less than six person-months. These packages support <a href="https://www.iso.org/standard/85420.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-1:2025</a>, whose Annex A describes the Deployment Packages for the Entry profile, and give a foundation for moving up to the Basic profile.</p>
+      <div class="dp-grid">
+        <div class="dp"><div class="covers"><span class="c-all">DRAFT</span></div><h3>📦 Project Management (Entry)</h3><p>Plan, track and close a small project using the Entry profile's project management tasks.</p><div class="meta">G. Hernández &amp; W. González (ÉTS, Canada)</div></div>
+        <div class="dp"><div class="covers"><span class="c-all">DRAFT</span></div><h3>📦 Software Implementation (Entry)</h3><p>Analyse, build, test and deliver the software using the Entry profile's implementation tasks.</p><div class="meta">W. González &amp; G. Hernández (ÉTS, Canada)</div></div>
+        <div class="dp"><div class="covers"><span class="c-all">ITERATIVE</span></div><h3>📦 Highly Iterative Software Process</h3><p>An iterative way of running the Entry profile's PM and SI processes, adding activities for short development cycles.</p><div class="meta">J. Kasurinen, Lappeenranta University of Technology (Finland)</div></div>
+        <div class="dp"><div class="covers"><span class="c-all">PROTOTYPE</span></div><h3>📦 Entry Profile Plug-in</h3><p>A process plug-in for the Eclipse Process Framework (EPF) that presents the Entry profile as browsable process content.</p><div class="meta">G. Hernández &amp; W. González (ÉTS, Canada)</div></div>
+      </div>
+    </div>
+
+    <div class="lvl" id="basic">
+      <div class="lvl-head"><span class="lvl-badge">LEVEL 2</span><h2>Basic profile</h2></div>
+      <p class="lead" style="margin-top:12px">For one product built by one team. The Basic profile has the most complete set of packages. Annex E of <a href="https://www.iso.org/standard/82669.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-2:2025</a> describes them. Filter by the process each package supports.</p>
+      <div class="tabs" id="dpFilter">
+      <button class="tab on" data-dp="all">All packages</button>
+      <button class="tab" data-dp="PM">Supports PM</button>
+      <button class="tab" data-dp="SI">Supports SI</button>
+      <button class="tab" data-dp="start">Getting started</button>
+    </div>
+    <div class="dp-grid" id="dpGrid"></div>
+      <div class="grid" style="margin-top:20px"><div class="card"><span class="tag">TOOL GUIDES</span><h3>Implementation guides</h3><p>Short guides show how to run specific practices with common tools, for example version control and issue tracking. Modern equivalents such as Git and Jira or GitHub Issues work just as well.</p></div></div>
+    </div>
+
+    <div class="lvl" id="intermediate">
+      <div class="lvl-head"><span class="lvl-badge">LEVEL 3</span><h2>Intermediate profile</h2></div>
+      <p class="lead" style="margin-top:12px">For companies running more than one project in parallel with more than one team.</p>
+      <div class="pending"><strong style="color:var(--ink)">In development.</strong> The ÉTS Deployment Package repository lists packages for the Intermediate profile as under development. Until they are published, the Basic profile packages are a good base for each project.</div>
+    </div>
+
+    <div class="lvl" id="advanced">
+      <div class="lvl-head"><span class="lvl-badge">LEVEL 4</span><h2>Advanced profile</h2></div>
+      <p class="lead" style="margin-top:12px">For companies that want to grow and stay independent, competitive businesses.</p>
+      <div class="pending"><strong style="color:var(--ink)">In development.</strong> The ÉTS Deployment Package repository lists packages for the Advanced profile as under development.</div>
+    </div>
+
+    <p style="margin-top:20px"><a href="https://profs.etsmtl.ca/claporte/english/VSE/VSE-packages.html" target="_blank" rel="noopener">Download all Deployment Packages (free) from the ÉTS Montréal repository →</a></p>
+
+  </div>
+</section>
+</main>
+<div class="wrap pager"><a href="deployment-packages.html"><small>← Back to</small><b>Deployment Packages</b></a><a class="next" href="dp-systems.html"><small>Next →</small><b>Systems engineering packages</b></a></div>
+
+<footer>
+  <div class="wrap">
+    <p>This page is an informative summary. It paraphrases the standard and does not replace the official ISO/IEC documents. Deployment Packages are informative and provided "as is" by their authors.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

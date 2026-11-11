@@ -115,7 +115,7 @@ function renderPanel(a){
   <div class="value"><b>Business value:</b> ${a.val}</div>
   <h4>Key tasks</h4><ul>${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
   <div class="io"><div><h4>Main inputs</h4>${chips(a.in)}</div><div><h4>Main outputs</h4>${chips(a.out)}</div></div>
-  <h4>Deployment Packages that help</h4>${a.dp.map(d=>`<a class="chip" href="deployment-packages.html" style="text-decoration:none;color:var(--cherry)">📦 ${d}</a>`).join('')}`;
+  <h4>Deployment Packages that help</h4>${a.dp.map(d=>`<a class="chip" href="dp-software.html#basic" style="text-decoration:none;color:var(--cherry)">📦 ${d}</a>`).join('')}`;
 }
 document.querySelectorAll('[data-proc]').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('[data-proc]').forEach(x=>x.classList.remove('on'));t.classList.add('on');cur=t.dataset.proc;renderActs();
@@ -219,7 +219,7 @@ const members=[
   {c:'Thailand',p:[
     {name:'Prakit Sangpar',initials:'PS',role:'Convenor of WG24 · Thailand',photo:'prakit-sangpar.jpg',
      bio:['Prakit Sangpar is a Thai digital industry and standards specialist. In 2021, he served as an adviser to the Digital Industry Club of the Federation of Thai Industries and represented Thailand in international work on ISO/IEC 29110, a standards series for very small software and systems engineering organizations. He is the convenor of WG24.'],
-     contrib:['Product Delivery Deployment Package (co-developer)']}
+     contrib:['Co-editor of 29110-5-1-1 and 29110-4-3']}
   ]},
   {c:'United Kingdom',p:[]},{c:'United States',p:[]}
 ];
@@ -234,7 +234,7 @@ function show(m){
   if(!m.p.length){panel.innerHTML=`<p class="member-empty">Member profiles for ${m.c} will be added soon.</p>`;return;}
   panel.innerHTML=m.p.map(x=>`<div class="person${x.photo?' has-photo':''}">${x.photo?`<img class="photo" src="${x.photo}" alt="Photo of ${x.name}" width="120" height="120" loading="lazy">`:`<div class="avatar" aria-hidden="true">${x.initials}</div>`}<div>
     <h4>${x.name}</h4><div class="role">${x.role}</div>${x.bio.map(t=>`<p>${t}</p>`).join('')}
-    ${x.contrib&&x.contrib.length?`<div>${x.contrib.map(c=>`<span class="chip">📦 ${c}</span>`).join('')}</div>`:''}</div></div>`).join('');
+    ${x.contrib&&x.contrib.length?`<div>${x.contrib.map(c=>`<span class="chip">📘 ${c}</span>`).join('')}</div>`:''}</div></div>`).join('');
 }
 })();
 
