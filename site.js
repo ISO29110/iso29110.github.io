@@ -217,8 +217,8 @@ const members=[
   {c:'Italy',p:[]},{c:'Japan',p:[]},{c:'Korea',p:[]},{c:'Luxembourg',p:[]},{c:'Mexico',p:[]},
   {c:'South Africa',p:[]},
   {c:'Thailand',p:[
-    {name:'Prakit Sangpar',initials:'PS',role:'WG24 member · Thailand',
-     bio:['Prakit Sangpar has worked on bringing ISO/IEC 29110 to Thai software companies. While with the Thailand Industrial Standards Institute (TISI), he co-developed the Product Delivery Deployment Package for the Basic profile with Claude Y. Laporte (ÉTS Montréal) and Sujimarn Suwannaroj of the Software Industry Promotion Agency (SIPA).'],
+    {name:'Prakit Sangpar',initials:'PS',role:'Convenor of WG24 · Thailand',photo:'images/prakit-sangpar.jpg',
+     bio:['Prakit Sangpar is a Thai digital industry and standards specialist. In 2021, he served as an adviser to the Digital Industry Club of the Federation of Thai Industries and represented Thailand in international work on ISO/IEC 29110, a standards series for very small software and systems engineering organizations. He is the convenor of WG24.'],
      contrib:['Product Delivery Deployment Package (co-developer)']}
   ]},
   {c:'United Kingdom',p:[]},{c:'United States',p:[]}
@@ -232,7 +232,7 @@ members.forEach((m,i)=>{
 });
 function show(m){
   if(!m.p.length){panel.innerHTML=`<p class="member-empty">Member profiles for ${m.c} will be added soon.</p>`;return;}
-  panel.innerHTML=m.p.map(x=>`<div class="person"><div class="avatar" aria-hidden="true">${x.initials}</div><div>
+  panel.innerHTML=m.p.map(x=>`<div class="person${x.photo?' has-photo':''}">${x.photo?`<img class="photo" src="${x.photo}" alt="Photo of ${x.name}" width="120" height="120" loading="lazy">`:`<div class="avatar" aria-hidden="true">${x.initials}</div>`}<div>
     <h4>${x.name}</h4><div class="role">${x.role}</div>${x.bio.map(t=>`<p>${t}</p>`).join('')}
     ${x.contrib&&x.contrib.length?`<div>${x.contrib.map(c=>`<span class="chip">📦 ${c}</span>`).join('')}</div>`:''}</div></div>`).join('');
 }

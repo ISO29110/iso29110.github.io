@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adoption Roadmap · ISO/IEC 29110</title>
-<meta name="description" content="A six-step path from first commitment to certification.">
+<title>Roadmap, Roles & Documents · ISO/IEC 29110</title>
+<meta name="description" content="A six-step adoption path to certification, who does what in a small team, and the documents your process produces.">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,12 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="index.html">ISO/IEC <span>29110</span></a>
-    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Business Value</a><a href="profiles.html">Profiles</a><a href="roles-documents.html">Roles & Documents</a><a href="deployment-packages.html">Deployment Packages</a><a href="roadmap.html" aria-current="page">Roadmap</a><a href="certification.html">Certification</a><a href="publications.html">Publications</a><a href="faq.html">FAQ</a></div>
+    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Business Value</a><a href="profiles.html">Profiles</a><a href="deployment-packages.html">Deployment Packages</a><a href="roadmap.html" aria-current="page">Roadmap</a><a href="certification.html">Certification</a><a href="publications.html">Publications</a><a href="faq.html">FAQ</a></div>
     <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
   </div>
 </nav>
 
-<div class="wrap page-top"><div class="crumb"><a href="index.html">Home</a> / Adoption Roadmap</div></div>
+<div class="wrap page-top"><div class="crumb"><a href="index.html">Home</a> / Roadmap, Roles & Documents</div></div>
 <main>
 <section id="roadmap">
   <div class="wrap">
@@ -36,6 +36,28 @@
       <li><span class="n">5</span><h3>Use it on real projects and keep evidence</h3><p>Run at least one full project with the new process. Keep the plans, records and reports: these are what an auditor will look at.</p></li>
       <li><span class="n">6</span><h3>Internal review, then certification</h3><p>Run an internal check against the profile, fix gaps, then engage an accredited certification body for the audit.</p></li>
     </ol>
+  </div>
+</section>
+<section id="roles">
+  <div class="wrap">
+    <div class="eyebrow">Roles</div>
+    <h2>You don't need to hire seven people</h2>
+    <p class="lead">The standard defines responsibilities, not headcount. In a small company one person typically covers several roles. The only rule of thumb is that work should be checked by someone other than its author. The 2025 Basic guide also describes a Support Manager role for the optional support process (Annex A).</p>
+    <div class="grid" id="roleGrid"></div>
+  </div>
+</section>
+<section id="products">
+  <div class="wrap">
+    <div class="eyebrow">Key documents</div>
+    <h2>The records your process produces</h2>
+    <p class="lead">These work products are also the evidence an auditor looks for. Most can be lightweight: a page, a spreadsheet, a ticket or a wiki entry is often enough. Under the 2025 editions, some documents (an operation guide, for example) are conditional: you produce them only when the customer asks for them.</p>
+    <div class="filter">
+      <input id="wpSearch" type="search" placeholder="Search documents…">
+      <button class="tab on" data-wp="all">All</button>
+      <button class="tab" data-wp="PM">PM</button>
+      <button class="tab" data-wp="SI">SI</button>
+    </div>
+    <div class="wp-grid" id="wpGrid"></div>
   </div>
 </section>
 </main>

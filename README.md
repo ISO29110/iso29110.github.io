@@ -6,7 +6,7 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 
 1. Create a free GitHub organization named `iso29110` (or use an account with that name).
 2. In it, create a public repository named exactly `iso29110.github.io`.
-3. Upload **all files** from the site folder (every `.html` page, `style.css`, `site.js`) and this README to the root of the `main` branch. Upload them together so the links between pages work.
+3. Upload **all files** from the site folder (every `.html` page, the `images` folder, `style.css`, `site.js`) and this README to the root of the `main` branch. Upload them together so the links between pages work.
 4. Go to **Settings → Pages** and check that it deploys from branch `main`, folder `/ (root)`.
 5. After a minute or two the site is live at `https://iso29110.github.io`.
 
@@ -18,12 +18,12 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 | `wg24.html` | WG24, history, founding countries and WG24 members by country |
 | `business-value.html` | Business value and fit check |
 | `profiles.html` | The four profiles; selecting Level 1 shows Entry profile details, Level 2 shows Basic profile details (PM/SI, what's new in 2025, annexes). Direct links: `profiles.html#entry`, `profiles.html#basic` |
-| `roles-documents.html` | Roles and key documents (work products) |
 | `deployment-packages.html` | Deployment Packages |
-| `roadmap.html` | Adoption roadmap |
+| `roadmap.html` | Adoption roadmap, roles and key documents (work products) |
 | `certification.html` | Certification |
 | `publications.html` | Published articles and case studies, grouped by year, each linked to its source |
 | `faq.html` | FAQ |
+| `images/` | Photos (e.g. WG24 member photos) |
 | `style.css` | Shared styles for all pages |
 | `site.js` | Shared scripts: dark mode and the interactive parts |
 
@@ -46,7 +46,8 @@ In `site.js`, find the `/* ---------- wg24 members ---------- */` block. Each co
 ```js
 {name:'Full Name',initials:'FN',role:'WG24 member · Country',
  bio:['First paragraph.','Second paragraph.'],
- contrib:['Something they contributed']}
+ contrib:['Something they contributed'],
+ photo:'images/their-photo.jpg'}   // optional: put a square photo in the images folder
 ```
 
 ## Adding publications
