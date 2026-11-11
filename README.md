@@ -15,7 +15,7 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 | File | Page |
 |---|---|
 | `index.html` | Home: introduction and links to every topic |
-| `wg24.html` | WG24, history, founding countries and WG24 members by country |
+| `wg24.html` | WG24, history and founding countries |
 | `business-value.html` | Business value and fit check |
 | `profiles.html` | The four profiles; selecting Level 1 shows Entry profile details, Level 2 shows Basic profile details (PM/SI, what's new in 2025, annexes). Direct links: `profiles.html#entry`, `profiles.html#basic` |
 | `profiles-systems.html` | Systems engineering profiles (ISO/IEC 29110-5-6-1 to 5-6-4), with sections `#se-entry`, `#se-basic`, `#se-intermediate`, `#se-advanced` |
@@ -29,6 +29,7 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 | `roadmap.html` | Adoption roadmap, roles and key documents (work products) |
 | `certification.html` | Certification |
 | `publications.html` | Published articles and case studies, grouped by year, each linked to its source |
+| `members.html` | WG24 members by country (Members menu) |
 | `faq.html` | FAQ |
 | `prakit-sangpar.jpg` | Photo used in the WG24 members section |
 | `style.css` | Shared styles for all pages |
@@ -48,6 +49,7 @@ The text of each topic is in its own `.html` file. The interactive data (profile
 
 ## Adding WG24 members
 
+Members appear on `members.html`. 
 In `site.js`, find the `/* ---------- wg24 members ---------- */` block. Each country has a list `p:[]`. Add a person like this:
 
 ```js
