@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Profiles · ISO/IEC 29110</title>
-<meta name="description" content="The four profiles, from Entry to Advanced, and which one matches your company today.">
+<meta name="description" content="The four profiles from Entry to Advanced, with what you implement at Level 1 (Entry) and Level 2 (Basic).">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 <nav>
   <div class="wrap">
     <a class="brand" href="index.html">ISO/IEC <span>29110</span></a>
-    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Business value</a><a href="fit-check.html">Is it for you?</a><a href="profiles.html" aria-current="page">Profiles</a><a href="basic-profile.html">What you implement</a><a href="deployment-packages.html">Deployment Packages</a><a href="roadmap.html">Roadmap</a><a href="certification.html">Certification</a><a href="roles.html">Roles</a><a href="documents.html">Documents</a><a href="faq.html">FAQ</a></div>
+    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Value & fit</a><a href="profiles.html" aria-current="page">Profiles</a><a href="deployment-packages.html">Deployment Packages</a><a href="roadmap.html">Roadmap</a><a href="certification.html">Certification</a><a href="roles.html">Roles</a><a href="documents.html">Documents</a><a href="faq.html">FAQ</a></div>
     <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
   </div>
 </nav>
@@ -25,15 +25,117 @@
 <main>
 <section id="profiles">
   <div class="wrap">
-    <div class="eyebrow">03 · Generic Profile Group</div>
+    <div class="eyebrow">Generic Profile Group</div>
     <h2>Pick the profile that matches your company today</h2>
-    <p class="lead">Profiles are a growth path. Most companies start with Entry or Basic. Click a level to see who it's for.</p>
+    <p class="lead">Profiles are a growth path. Most companies start with Entry or Basic. Select a level to see who it is for. Level 1 (Entry) and Level 2 (Basic) also show what you implement.</p>
     <div class="ladder" id="ladder"></div>
     <div class="ladder-detail" id="ladderDetail"></div>
-  </div>
+    </div>
+  <div class="pdetail" id="detail-entry" hidden><div class="wrap">
+    <div class="eyebrow">Level 1 · Entry profile</div>
+    <h2>What you implement in the Entry profile</h2>
+    <p class="lead">Defined in <a href="https://www.iso.org/standard/85420.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-1:2025</a> (free), the Entry profile is for <strong>start-ups operating for less than three years</strong> and companies working on <strong>small projects of less than six person-months</strong>. It uses the same two processes and the same activities as Basic, with fewer tasks, documents and roles, so a small team can get a disciplined process running quickly.</p>
+
+    <div class="flow" aria-label="Entry profile flow">
+      <span class="node x">Customer's Statement of Work</span><span class="arrow">→</span>
+      <span class="node pm">PM.1 Plan</span><span class="arrow">→</span>
+      <span class="node pm">PM.2 Execute ⇄ PM.3 Control</span><span class="arrow">⇄</span>
+      <span class="node si">SI.1 – SI.6 Build</span><span class="arrow">→</span>
+      <span class="node pm">PM.4 Close</span><span class="arrow">→</span>
+      <span class="node x">Accepted product</span>
+    </div>
+
+    <div class="entry-grid">
+      <div>
+        <h3>Entry vs Basic at a glance</h3>
+        <div class="tbl" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Element</th><th>Entry</th><th>Basic</th></tr></thead>
+            <tbody>
+              <tr><td>Processes</td><td>2 (PM, SI)</td><td>2 (PM, SI)</td></tr>
+              <tr><td>Activities</td><td>PM.1–PM.4, SI.1–SI.6</td><td>PM.1–PM.4, SI.1–SI.6</td></tr>
+              <tr><td>Tasks</td><td><strong>40</strong></td><td>67</td></tr>
+              <tr><td>Work products</td><td><strong>14</strong></td><td>22</td></tr>
+              <tr><td>Roles</td><td><strong>3</strong></td><td>7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Task, work product and role counts are for the first editions (Entry 2012, Basic 2011), as published by Laporte &amp; O'Connor. The 2025 Entry edition removes some further tasks to keep the profile light.</p>
+      </div>
+      <div>
+        <h3>Three roles cover the work</h3>
+        <div class="mini-roles">
+          <div><span class="tag">CUS</span><b>Customer</b><p>Provides the Statement of Work, agrees requirements and accepts the product.</p></div>
+          <div><span class="tag">PJM</span><b>Project Manager</b><p>Plans the project, tracks progress and talks with the customer.</p></div>
+          <div><span class="tag">WT</span><b>Work Team</b><p>Analyses, designs, builds, tests and delivers the software.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:36px">What the Entry profile focuses on</h3>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><span class="tag">PLAN</span><h3>An agreed plan</h3><p>Turn the customer's Statement of Work into a simple, agreed plan with tasks, dates and effort.</p></div>
+      <div class="card"><span class="tag">REQUIREMENTS</span><h3>Agreed requirements</h3><p>Write down what the customer needs and confirm it with them before building.</p></div>
+      <div class="card"><span class="tag">BUILD &amp; TEST</span><h3>Tested software</h3><p>Build the software and test it against the requirements before delivery.</p></div>
+      <div class="card"><span class="tag">CONTROL</span><h3>Controlled delivery</h3><p>Track progress, keep work under version control, deliver formally and get written acceptance.</p></div>
+    </div>
+
+    <div class="grid" style="margin-top:20px">
+      <div class="card"><span class="tag">2025 EDITION</span><h3>Lighter and easier to grow from</h3><p>The 2025 edition rewords tasks for clarity, makes customer-requested documents conditional, and removes some tasks so the move up to Basic is smoother.</p></div>
+      <div class="card"><span class="tag">SUPPORT</span><h3>Deployment Packages for Entry</h3><p>Project Management and Software Implementation packages, plus a highly iterative process package, help you start. Annex A of the guide describes them. <a href="deployment-packages.html">See Deployment Packages →</a></p></div>
+      <div class="card"><span class="tag">NEXT STEP</span><h3>When to move up to Basic</h3><p>Move up once your projects grow beyond about six person-months, your company is past the start-up stage, or customers ask for more rigour. <a href="profiles.html#basic" data-goto="basic">See Level 2 →</a></p></div>
+    </div>
+</div></div>
+  <div class="pdetail" id="detail-basic"><div class="wrap">
+    <div class="eyebrow">Level 2 · Basic profile</div>
+    <h2>What you implement in the Basic profile</h2>
+    <p class="lead">As defined in <a href="https://www.iso.org/standard/82669.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-2:2025</a>, <strong style="color:var(--pm)">Project Management (PM)</strong> keeps the work on plan and the customer informed. <strong style="color:var(--si)">Software Implementation (SI)</strong> turns requirements into a tested, delivered product. Everything starts from the customer's Statement of Work. The Entry profile (<a href="https://www.iso.org/standard/85420.html" target="_blank" rel="noopener">29110-5-1-1:2025</a>) uses the same two processes with fewer tasks.</p>
+    <div class="flow" aria-label="Basic profile flow">
+      <span class="node x">Customer's Statement of Work</span><span class="arrow">→</span>
+      <span class="node pm">PM.1 Plan</span><span class="arrow">→</span>
+      <span class="node pm">PM.2 Execute ⇄ PM.3 Control</span><span class="arrow">⇄</span>
+      <span class="node si">SI.1 – SI.6 Build</span><span class="arrow">→</span>
+      <span class="node pm">PM.4 Close</span><span class="arrow">→</span>
+      <span class="node x">Accepted product</span>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-proc="PM">Project Management</button>
+      <button class="tab" data-proc="SI">Software Implementation</button>
+    </div>
+    <div class="explorer">
+      <div class="acts" id="acts"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+
+    <h3 style="margin-top:44px">What's new in the 2025 editions</h3>
+    <p style="color:var(--muted);max-width:72ch;margin-top:0">ISO/IEC 29110-5-1-1:2025 and 29110-5-1-2:2025 cancel and replace the Technical Reports from 2012 and 2011. The core PM and SI processes are the same, but the guides are clearer and more flexible:</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><span class="tag">STATUS</span><h3>International Standards</h3><p>Both guides are now published as International Standards rather than Technical Reports.</p></div>
+      <div class="card"><span class="tag">CLARITY</span><h3>Clearer tasks and terms</h3><p>Many tasks are reworded, terms are defined in the guide itself, and terminology is aligned with the updated ISO/IEC/IEEE 12207 and 15289.</p></div>
+      <div class="card"><span class="tag">FLEXIBILITY</span><h3>Conditional tasks</h3><p>Work products such as an operation guide are produced only when the customer asks for them. This replaces the old "optional" label.</p></div>
+      <div class="card"><span class="tag">ENTRY</span><h3>A lighter Entry profile</h3><p>Some Entry tasks were removed so start-ups can adopt it quickly and move up to Basic more easily.</p></div>
+    </div>
+
+    <h3 style="margin-top:36px">Optional add-ons in the Basic profile (informative annexes)</h3>
+    <p style="color:var(--muted);max-width:72ch;margin-top:0">The 2025 Basic guide adds annexes you can adopt when your business needs them, beyond the core profile.</p>
+    <div class="annex-grid">
+      <div class="annex"><b>ANNEX A</b><h4>Support process</h4><p>Handling production support and the customer relationship after delivery, led by a Support Manager.</p></div>
+      <div class="annex"><b>ANNEX B</b><h4>Additional testing</h4><p>Extra testing tasks for teams that need more thorough verification.</p></div>
+      <div class="annex"><b>ANNEX C</b><h4>Accessibility</h4><p>Tasks for building software that people with disabilities can use.</p></div>
+      <div class="annex"><b>ANNEX D</b><h4>Security</h4><p>Security tasks added to the Basic profile's activities.</p></div>
+      <div class="annex"><b>ANNEX E</b><h4>Deployment Packages</h4><p>The packages that support the Basic profile. See the next section.</p></div>
+    </div>
+  </div></div>
+  <div class="pdetail" id="detail-later" hidden><div class="wrap">
+    <div class="card" style="margin-top:8px">
+      <span class="tag">LEVELS 3 &amp; 4</span>
+      <h3>Intermediate and Advanced</h3>
+      <p>These levels add organisation-level practices for companies that run several projects or are growing their business. This guide focuses on the Entry and Basic profiles. Select <a href="#entry" data-goto="entry">Level 1</a> or <a href="profiles.html#basic" data-goto="basic">Level 2</a> to see what you implement.</p>
+    </div>
+</div></div>
 </section>
 </main>
-<div class="wrap pager"><a href="fit-check.html"><small>← Previous</small><b>Fit Check</b></a><a class="next" href="basic-profile.html"><small>Next →</small><b>Basic Profile</b></a></div>
+<div class="wrap pager"><a href="business-value.html"><small>← Previous</small><b>Business Value & Fit Check</b></a><a class="next" href="deployment-packages.html"><small>Next →</small><b>Deployment Packages</b></a></div>
 
 <footer>
   <div class="wrap">

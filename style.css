@@ -201,3 +201,17 @@ main section:first-child{border-top:0;padding-top:28px}
 .pager small{display:block;color:var(--muted);font-size:.8rem}
 .pager b{color:var(--navy);font-family:Fraunces,serif}
 .pager .next{text-align:right}
+
+/* combined profiles page */
+button.step{font:inherit;text-align:left;width:100%}
+.step .pick{display:inline-block;margin-top:8px;font-size:.75rem;font-weight:600;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:999px}
+.pdetail{border-top:1px solid var(--line);margin-top:40px;padding-top:44px}
+.pdetail[hidden]{display:none}
+.entry-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-top:32px;align-items:start}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.mini-roles{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.mini-roles div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mini-roles .tag{margin:0 8px 0 0}
+.mini-roles b{color:var(--navy)}
+.mini-roles p{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.entry-grid{grid-template-columns:1fr}}

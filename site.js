@@ -18,15 +18,33 @@ const profiles=[
   {n:'Intermediate',c:'s3',sub:'Several projects in parallel',d:'For companies running multiple projects at once. Adds organisation-level practices such as portfolio management, business management and sharing resources across projects.'},
   {n:'Advanced',c:'s4',sub:'Growing, competitive firms',d:'For companies that want to sustain and grow as independent, competitive businesses. Builds on Intermediate with stronger business and organisational management.'}
 ];
+
 const ladder=document.getElementById('ladder'), ld=document.getElementById('ladderDetail');
+const keys=['entry','basic','intermediate','advanced'];
+const steps=[];
 profiles.forEach((p,i)=>{
-  const el=document.createElement('div'); el.className='step '+p.c+(i===1?' active':'');
-  el.innerHTML=`<small>Level ${i+1}</small><h3>${p.n}</h3><small>${p.sub}</small>`;
-  el.onclick=()=>{document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));el.classList.add('active');showProfile(p)};
-  ladder.appendChild(el);
+  const el=document.createElement('button'); el.type='button'; el.className='step '+p.c;
+  el.innerHTML=`<small>Level ${i+1}</small><h3>${p.n}</h3><small>${p.sub}</small>`+(i<2?'<br><span class="pick">Details below ↓</span>':'');
+  el.onclick=()=>select(i,true);
+  ladder.appendChild(el); steps.push(el);
 });
-function showProfile(p){ld.innerHTML=`<h3>${p.n} profile</h3><p>${p.d}</p>`+(p.doc?`<p style="margin-top:10px;font-size:.9rem">📘 Guide: <a href="${p.url}" target="_blank" rel="noopener">${p.doc}</a> (free)</p>`:'')}
-showProfile(profiles[1]);
+function select(i,fromClick){
+  const p=profiles[i];
+  steps.forEach((s,j)=>{s.classList.toggle('active',j===i);s.setAttribute('aria-pressed',j===i)});
+  ld.innerHTML=`<h3>${p.n} profile</h3><p>${p.d}</p>`+(p.doc?`<p style="margin-top:10px;font-size:.9rem">📘 Guide: <a href="${p.url}" target="_blank" rel="noopener">${p.doc}</a> (free)</p>`:'');
+  const show = i===0?'detail-entry':i===1?'detail-basic':'detail-later';
+  document.querySelectorAll('.pdetail').forEach(d=>d.hidden=d.id!==show);
+  if(fromClick){try{history.replaceState(null,'','#'+keys[i])}catch(e){}}
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-goto]'); if(!a) return;
+  e.preventDefault(); const i=keys.indexOf(a.dataset.goto); select(i,true);
+  ladder.scrollIntoView({behavior:'smooth',block:'start'});
+});
+function fromHash(){const i=keys.indexOf(location.hash.slice(1)); select(i>=0?i:1,false); if(i>=0) setTimeout(()=>ladder.scrollIntoView({block:'start'}),0);}
+window.addEventListener('hashchange',fromHash);
+fromHash();
+
 })();
 
 /* ---------- activities ---------- */

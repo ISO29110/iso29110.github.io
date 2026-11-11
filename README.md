@@ -16,10 +16,8 @@ A single-page guide to ISO/IEC 29110 (lifecycle profiles for Very Small Entities
 |---|---|
 | `index.html` | Home: introduction and links to every topic |
 | `wg24.html` | WG24 and history |
-| `business-value.html` | Business value |
-| `fit-check.html` | Is it for you? |
-| `profiles.html` | The four profiles |
-| `basic-profile.html` | Basic profile (PM and SI), what's new in 2025, annexes |
+| `business-value.html` | Business value and fit check |
+| `profiles.html` | The four profiles; selecting Level 1 shows Entry profile details, Level 2 shows Basic profile details (PM/SI, what's new in 2025, annexes). Direct links: `profiles.html#entry`, `profiles.html#basic` |
 | `deployment-packages.html` | Deployment Packages |
 | `roadmap.html` | Adoption roadmap |
 | `certification.html` | Certification |
