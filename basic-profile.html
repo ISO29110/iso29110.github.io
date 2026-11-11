@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basic Profile · ISO/IEC 29110</title>
+<meta name="description" content="The PM and SI processes of the Basic profile, what is new in 2025, and the optional annexes.">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">ISO/IEC <span>29110</span></a>
+    <div class="links"><a href="wg24.html">WG24</a><a href="business-value.html">Business value</a><a href="fit-check.html">Is it for you?</a><a href="profiles.html">Profiles</a><a href="basic-profile.html" aria-current="page">What you implement</a><a href="deployment-packages.html">Deployment Packages</a><a href="roadmap.html">Roadmap</a><a href="certification.html">Certification</a><a href="roles.html">Roles</a><a href="documents.html">Documents</a><a href="faq.html">FAQ</a></div>
+    <button id="themeBtn" aria-label="Toggle dark mode">◐</button>
+  </div>
+</nav>
+
+<div class="wrap page-top"><div class="crumb"><a href="index.html">Home</a> / Basic Profile</div></div>
+<main>
+<section id="basic">
+  <div class="wrap">
+    <div class="eyebrow">04 · What you implement</div>
+    <h2>The Basic profile in business terms</h2>
+    <p class="lead">As defined in <a href="https://www.iso.org/standard/82669.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-2:2025</a>, <strong style="color:var(--pm)">Project Management (PM)</strong> keeps the work on plan and the customer informed. <strong style="color:var(--si)">Software Implementation (SI)</strong> turns requirements into a tested, delivered product. Everything starts from the customer's Statement of Work. The Entry profile (<a href="https://www.iso.org/standard/85420.html" target="_blank" rel="noopener">29110-5-1-1:2025</a>) uses the same two processes with fewer tasks.</p>
+    <div class="flow" aria-label="Basic profile flow">
+      <span class="node x">Customer's Statement of Work</span><span class="arrow">→</span>
+      <span class="node pm">PM.1 Plan</span><span class="arrow">→</span>
+      <span class="node pm">PM.2 Execute ⇄ PM.3 Control</span><span class="arrow">⇄</span>
+      <span class="node si">SI.1 – SI.6 Build</span><span class="arrow">→</span>
+      <span class="node pm">PM.4 Close</span><span class="arrow">→</span>
+      <span class="node x">Accepted product</span>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-proc="PM">Project Management</button>
+      <button class="tab" data-proc="SI">Software Implementation</button>
+    </div>
+    <div class="explorer">
+      <div class="acts" id="acts"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+
+    <h3 style="margin-top:44px">What's new in the 2025 editions</h3>
+    <p style="color:var(--muted);max-width:72ch;margin-top:0">ISO/IEC 29110-5-1-1:2025 and 29110-5-1-2:2025 cancel and replace the Technical Reports from 2012 and 2011. The core PM and SI processes are the same, but the guides are clearer and more flexible:</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><span class="tag">STATUS</span><h3>International Standards</h3><p>Both guides are now published as International Standards rather than Technical Reports.</p></div>
+      <div class="card"><span class="tag">CLARITY</span><h3>Clearer tasks and terms</h3><p>Many tasks are reworded, terms are defined in the guide itself, and terminology is aligned with the updated ISO/IEC/IEEE 12207 and 15289.</p></div>
+      <div class="card"><span class="tag">FLEXIBILITY</span><h3>Conditional tasks</h3><p>Work products such as an operation guide are produced only when the customer asks for them. This replaces the old "optional" label.</p></div>
+      <div class="card"><span class="tag">ENTRY</span><h3>A lighter Entry profile</h3><p>Some Entry tasks were removed so start-ups can adopt it quickly and move up to Basic more easily.</p></div>
+    </div>
+
+    <h3 style="margin-top:36px">Optional add-ons in the Basic profile (informative annexes)</h3>
+    <p style="color:var(--muted);max-width:72ch;margin-top:0">The 2025 Basic guide adds annexes you can adopt when your business needs them, beyond the core profile.</p>
+    <div class="annex-grid">
+      <div class="annex"><b>ANNEX A</b><h4>Support process</h4><p>Handling production support and the customer relationship after delivery, led by a Support Manager.</p></div>
+      <div class="annex"><b>ANNEX B</b><h4>Additional testing</h4><p>Extra testing tasks for teams that need more thorough verification.</p></div>
+      <div class="annex"><b>ANNEX C</b><h4>Accessibility</h4><p>Tasks for building software that people with disabilities can use.</p></div>
+      <div class="annex"><b>ANNEX D</b><h4>Security</h4><p>Security tasks added to the Basic profile's activities.</p></div>
+      <div class="annex"><b>ANNEX E</b><h4>Deployment Packages</h4><p>The packages that support the Basic profile. See the next section.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+<div class="wrap pager"><a href="profiles.html"><small>← Previous</small><b>Profiles</b></a><a class="next" href="deployment-packages.html"><small>Next →</small><b>Deployment Packages</b></a></div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Resources.</strong> <a href="https://www.iso.org/standard/85420.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-1:2025</a> (Entry profile) and <a href="https://www.iso.org/standard/82669.html" target="_blank" rel="noopener">ISO/IEC 29110-5-1-2:2025</a> (Basic profile) are free to download from ISO. Other free parts are on the ISO <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/" target="_blank" rel="noopener">Publicly Available Standards</a> page. Deployment Packages are available from <a href="https://profs.etsmtl.ca/claporte/english/VSE/VSE-packages.html" target="_blank" rel="noopener">Prof. Claude Y. Laporte's repository</a> at ÉTS Montréal.</p>
+    <p>This page is an informative summary. It paraphrases the standard and does not replace the official ISO/IEC documents. Deployment Packages are informative and provided "as is" by their authors.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
